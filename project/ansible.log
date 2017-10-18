@@ -1,0 +1,939 @@
+2017-10-16 01:12:42,418 p=1165 u=root |   [ERROR]: User interrupted execution
+
+2017-10-16 01:13:44,541 p=1178 u=root |  PLAY [Spinup Instance] *********************************************************
+2017-10-16 01:13:44,594 p=1178 u=root |  TASK [Gathering Facts] *********************************************************
+2017-10-16 01:13:45,090 p=1178 u=root |  ok: [localhost]
+2017-10-16 01:13:45,096 p=1178 u=root |  TASK [instance : Launching an EC2 Instance] ************************************
+2017-10-16 01:13:46,045 p=1178 u=root |  An exception occurred during task execution. To see the full traceback, use -vvv. The error was: <Response><Errors><Error><Code>InvalidGroup.NotFound</Code><Message>The security group 'sg-0128df72' does not exist</Message></Error></Errors><RequestID>7dbc0292-e152-405a-b273-1ba9383b4feb</RequestID></Response>
+2017-10-16 01:13:46,045 p=1178 u=root |  fatal: [localhost -> localhost]: FAILED! => {"changed": false, "failed": true, "module_stderr": "Traceback (most recent call last):\n  File \"/tmp/ansible_JOMcds/ansible_module_ec2.py\", line 1652, in <module>\n    main()\n  File \"/tmp/ansible_JOMcds/ansible_module_ec2.py\", line 1641, in main\n    (instance_dict_array, new_instance_ids, changed) = create_instances(module, ec2, vpc)\n  File \"/tmp/ansible_JOMcds/ansible_module_ec2.py\", line 1034, in create_instances\n    grp_details = ec2.get_all_security_groups(group_ids=group_id)\n  File \"/usr/lib/python2.7/site-packages/boto/ec2/connection.py\", line 2984, in get_all_security_groups\n    [('item', SecurityGroup)], verb='POST')\n  File \"/usr/lib/python2.7/site-packages/boto/connection.py\", line 1186, in get_list\n    raise self.ResponseError(response.status, response.reason, body)\nboto.exception.EC2ResponseError: EC2ResponseError: 400 Bad Request\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Response><Errors><Error><Code>InvalidGroup.NotFound</Code><Message>The security group 'sg-0128df72' does not exist</Message></Error></Errors><RequestID>7dbc0292-e152-405a-b273-1ba9383b4feb</RequestID></Response>\n", "module_stdout": "", "msg": "MODULE FAILURE", "rc": 0}
+2017-10-16 01:13:46,046 p=1178 u=root |  	to retry, use: --limit @/home/centos/ansible_demo/cdproject/project/site.retry
+
+2017-10-16 01:13:46,047 p=1178 u=root |  PLAY RECAP *********************************************************************
+2017-10-16 01:13:46,047 p=1178 u=root |  localhost                  : ok=1    changed=0    unreachable=0    failed=1   
+2017-10-16 01:42:53,069 p=1325 u=root |  PLAY [Spinup Instance] *********************************************************
+2017-10-16 01:42:53,090 p=1325 u=root |  TASK [Gathering Facts] *********************************************************
+2017-10-16 01:42:53,526 p=1325 u=root |  ok: [localhost]
+2017-10-16 01:42:53,531 p=1325 u=root |  TASK [instance : Launching an EC2 Instance] ************************************
+2017-10-16 01:43:35,486 p=1325 u=root |  changed: [localhost -> localhost]
+2017-10-16 01:43:35,490 p=1325 u=root |  TASK [instance : Add all instance public IPs to host group] ********************
+2017-10-16 01:43:35,513 p=1325 u=root |  changed: [localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-23-251.us-west-2.compute.internal', u'public_ip': u'52.34.225.223', u'private_ip': u'172.31.23.251', u'id': u'i-0831e33e299770de1', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/xvda': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-0a7551120937fd83a'}}, u'key_name': u'ec2key', u'image_id': u'ami-e689729e', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-52-34-225-223.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-52-34-225-223.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-16T01:42:54.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/xvda', u'hypervisor': u'xen'})
+2017-10-16 01:43:35,524 p=1325 u=root |  TASK [instance : Wait for SSH to come up] **************************************
+2017-10-16 01:44:35,830 p=1325 u=root |  ok: [localhost -> localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-23-251.us-west-2.compute.internal', u'public_ip': u'52.34.225.223', u'private_ip': u'172.31.23.251', u'id': u'i-0831e33e299770de1', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/xvda': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-0a7551120937fd83a'}}, u'key_name': u'ec2key', u'image_id': u'ami-e689729e', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-52-34-225-223.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-52-34-225-223.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-16T01:42:54.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/xvda', u'hypervisor': u'xen'})
+2017-10-16 01:44:35,838 p=1325 u=root |  PLAY [Install Tomcat & Deploy files] *******************************************
+2017-10-16 01:44:35,845 p=1325 u=root |  TASK [Gathering Facts] *********************************************************
+2017-10-16 01:44:35,943 p=1325 u=root |  fatal: [52.34.225.223]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Warning: Permanently added '52.34.225.223' (ECDSA) to the list of known hosts.\r\nPermission denied (publickey).\r\n", "unreachable": true}
+2017-10-16 01:44:35,944 p=1325 u=root |  	to retry, use: --limit @/home/centos/ansible_demo/cdproject/project/site.retry
+
+2017-10-16 01:44:35,944 p=1325 u=root |  PLAY RECAP *********************************************************************
+2017-10-16 01:44:35,944 p=1325 u=root |  52.34.225.223              : ok=0    changed=0    unreachable=1    failed=0   
+2017-10-16 01:44:35,945 p=1325 u=root |  localhost                  : ok=4    changed=2    unreachable=0    failed=0   
+2017-10-16 01:52:46,345 p=1460 u=root |  PLAY [Spinup Instance] *********************************************************
+2017-10-16 01:52:46,365 p=1460 u=root |  TASK [Gathering Facts] *********************************************************
+2017-10-16 01:52:46,829 p=1460 u=root |  ok: [localhost]
+2017-10-16 01:52:46,835 p=1460 u=root |  TASK [instance : Launching an EC2 Instance] ************************************
+2017-10-16 01:53:03,416 p=1460 u=root |  changed: [localhost -> localhost]
+2017-10-16 01:53:03,419 p=1460 u=root |  TASK [instance : Add all instance public IPs to host group] ********************
+2017-10-16 01:53:03,442 p=1460 u=root |  changed: [localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-19-213.us-west-2.compute.internal', u'public_ip': u'52.36.154.26', u'private_ip': u'172.31.19.213', u'id': u'i-03091909bd776afe5', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/xvda': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-0a8ac591dff9fcc58'}}, u'key_name': u'ec2key', u'image_id': u'ami-e689729e', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-52-36-154-26.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-52-36-154-26.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-16T01:52:47.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/xvda', u'hypervisor': u'xen'})
+2017-10-16 01:53:03,452 p=1460 u=root |  TASK [instance : Wait for SSH to come up] **************************************
+2017-10-16 01:54:03,720 p=1460 u=root |  ok: [localhost -> localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-19-213.us-west-2.compute.internal', u'public_ip': u'52.36.154.26', u'private_ip': u'172.31.19.213', u'id': u'i-03091909bd776afe5', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/xvda': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-0a8ac591dff9fcc58'}}, u'key_name': u'ec2key', u'image_id': u'ami-e689729e', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-52-36-154-26.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-52-36-154-26.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-16T01:52:47.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/xvda', u'hypervisor': u'xen'})
+2017-10-16 01:54:03,728 p=1460 u=root |  PLAY [Install Tomcat & Deploy files] *******************************************
+2017-10-16 01:54:03,736 p=1460 u=root |  TASK [Gathering Facts] *********************************************************
+2017-10-16 01:54:03,825 p=1460 u=root |  fatal: [52.36.154.26]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Warning: Permanently added '52.36.154.26' (ECDSA) to the list of known hosts.\r\nPermission denied (publickey).\r\n", "unreachable": true}
+2017-10-16 01:54:03,826 p=1460 u=root |  	to retry, use: --limit @/home/centos/ansible_demo/cdproject/project/site.retry
+
+2017-10-16 01:54:03,826 p=1460 u=root |  PLAY RECAP *********************************************************************
+2017-10-16 01:54:03,826 p=1460 u=root |  52.36.154.26               : ok=0    changed=0    unreachable=1    failed=0   
+2017-10-16 01:54:03,826 p=1460 u=root |  localhost                  : ok=4    changed=2    unreachable=0    failed=0   
+2017-10-16 02:27:08,157 p=1710 u=root |  PLAY [Spinup Instance] *********************************************************
+2017-10-16 02:27:08,178 p=1710 u=root |  TASK [Gathering Facts] *********************************************************
+2017-10-16 02:27:08,645 p=1710 u=root |  ok: [localhost]
+2017-10-16 02:27:08,651 p=1710 u=root |  TASK [instance : Launching an EC2 Instance] ************************************
+2017-10-16 02:27:30,430 p=1710 u=root |  changed: [localhost -> localhost]
+2017-10-16 02:27:30,433 p=1710 u=root |  TASK [instance : Add all instance public IPs to host group] ********************
+2017-10-16 02:27:30,456 p=1710 u=root |  changed: [localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-18-83.us-west-2.compute.internal', u'public_ip': u'35.163.42.109', u'private_ip': u'172.31.18.83', u'id': u'i-09043686bbc70ae99', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/xvda': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-0c948bd558a909e65'}}, u'key_name': u'ec2key', u'image_id': u'ami-e689729e', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-35-163-42-109.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-35-163-42-109.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-16T02:27:09.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/xvda', u'hypervisor': u'xen'})
+2017-10-16 02:27:30,464 p=1710 u=root |  TASK [instance : Wait for SSH to come up] **************************************
+2017-10-16 02:28:30,736 p=1710 u=root |  ok: [localhost -> localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-18-83.us-west-2.compute.internal', u'public_ip': u'35.163.42.109', u'private_ip': u'172.31.18.83', u'id': u'i-09043686bbc70ae99', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/xvda': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-0c948bd558a909e65'}}, u'key_name': u'ec2key', u'image_id': u'ami-e689729e', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-35-163-42-109.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-35-163-42-109.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-16T02:27:09.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/xvda', u'hypervisor': u'xen'})
+2017-10-16 02:28:30,745 p=1710 u=root |  PLAY [Install Tomcat & Deploy files] *******************************************
+2017-10-16 02:28:30,754 p=1710 u=root |  TASK [firewalld : Install firewalld] *******************************************
+2017-10-16 02:28:30,846 p=1710 u=root |  fatal: [35.163.42.109]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Warning: Permanently added '35.163.42.109' (ECDSA) to the list of known hosts.\r\nPermission denied (publickey).\r\n", "unreachable": true}
+2017-10-16 02:28:30,847 p=1710 u=root |  	to retry, use: --limit @/home/centos/ansible_demo/cdproject/project/site.retry
+
+2017-10-16 02:28:30,847 p=1710 u=root |  PLAY RECAP *********************************************************************
+2017-10-16 02:28:30,847 p=1710 u=root |  35.163.42.109              : ok=0    changed=0    unreachable=1    failed=0   
+2017-10-16 02:28:30,847 p=1710 u=root |  localhost                  : ok=4    changed=2    unreachable=0    failed=0   
+2017-10-16 06:29:43,791 p=2633 u=root |  ERROR! Attempted to read "ec2.ini" as ini file: ec2.ini:16: Expected key=value host variable assignment, got: all 
+2017-10-16 06:30:39,568 p=2639 u=root |  PLAY [Spinup Instance] *********************************************************
+2017-10-16 06:30:39,589 p=2639 u=root |  TASK [Gathering Facts] *********************************************************
+2017-10-16 06:30:40,046 p=2639 u=root |  ok: [localhost]
+2017-10-16 06:30:40,051 p=2639 u=root |  TASK [instance : Launching an EC2 Instance] ************************************
+2017-10-16 06:31:32,236 p=2639 u=root |  changed: [localhost -> localhost]
+2017-10-16 06:31:32,239 p=2639 u=root |  TASK [instance : Add all instance public IPs to host group] ********************
+2017-10-16 06:31:32,262 p=2639 u=root |  changed: [localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-18-189.us-west-2.compute.internal', u'public_ip': u'34.214.227.154', u'private_ip': u'172.31.18.189', u'id': u'i-03b84d9668e1ae5a0', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/xvda': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-02adc462b9a07ad11'}}, u'key_name': u'ec2key', u'image_id': u'ami-e689729e', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-34-214-227-154.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-34-214-227-154.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-16T06:30:41.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/xvda', u'hypervisor': u'xen'})
+2017-10-16 06:31:32,271 p=2639 u=root |  TASK [instance : Wait for SSH to come up] **************************************
+2017-10-16 06:32:32,556 p=2639 u=root |  ok: [localhost -> localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-18-189.us-west-2.compute.internal', u'public_ip': u'34.214.227.154', u'private_ip': u'172.31.18.189', u'id': u'i-03b84d9668e1ae5a0', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/xvda': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-02adc462b9a07ad11'}}, u'key_name': u'ec2key', u'image_id': u'ami-e689729e', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-34-214-227-154.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-34-214-227-154.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-16T06:30:41.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/xvda', u'hypervisor': u'xen'})
+2017-10-16 06:32:32,564 p=2639 u=root |  PLAY [Install Tomcat & Deploy files] *******************************************
+2017-10-16 06:32:32,573 p=2639 u=root |  TASK [firewalld : Install firewalld] *******************************************
+2017-10-16 06:32:32,664 p=2639 u=root |  fatal: [34.214.227.154]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Warning: Permanently added '34.214.227.154' (ECDSA) to the list of known hosts.\r\nPermission denied (publickey).\r\n", "unreachable": true}
+2017-10-16 06:32:32,665 p=2639 u=root |  	to retry, use: --limit @/home/centos/ansible_demo/cdproject/project/site.retry
+
+2017-10-16 06:32:32,665 p=2639 u=root |  PLAY RECAP *********************************************************************
+2017-10-16 06:32:32,666 p=2639 u=root |  34.214.227.154             : ok=0    changed=0    unreachable=1    failed=0   
+2017-10-16 06:32:32,666 p=2639 u=root |  localhost                  : ok=4    changed=2    unreachable=0    failed=0   
+2017-10-16 08:11:05,251 p=3036 u=root |  Using /home/centos/ansible_demo/cdproject/project/ansible.cfg as config file
+2017-10-16 08:11:46,970 p=3036 u=root |  Loading callback plugin default of type stdout, v2.0 from /usr/lib/python2.7/site-packages/ansible/plugins/callback/__init__.pyc
+2017-10-16 08:11:47,014 p=3036 u=root |  PLAYBOOK: site.yml *****************************************************************************
+2017-10-16 08:11:47,014 p=3036 u=root |  2 plays in site.yml
+2017-10-16 08:11:47,043 p=3036 u=root |  PLAY [Spinup Instance] *************************************************************************
+2017-10-16 08:11:47,064 p=3036 u=root |  TASK [Gathering Facts] *************************************************************************
+2017-10-16 08:11:47,291 p=3036 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/system/setup.py
+2017-10-16 08:11:47,527 p=3036 u=root |  ok: [localhost]
+2017-10-16 08:11:47,528 p=3036 u=root |  META: ran handlers
+2017-10-16 08:11:47,533 p=3036 u=root |  TASK [instance : Launching an EC2 Instance] ****************************************************
+2017-10-16 08:11:47,533 p=3036 u=root |  task path: /home/centos/ansible_demo/cdproject/project/roles/instance/tasks/main.yml:2
+2017-10-16 08:11:47,694 p=3036 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/amazon/ec2.py
+2017-10-16 08:12:09,310 p=3036 u=root |  changed: [localhost -> localhost] => {
+    "changed": true, 
+    "instance_ids": [
+        "i-02b43174f19da6f90"
+    ], 
+    "instances": [
+        {
+            "ami_launch_index": "0", 
+            "architecture": "x86_64", 
+            "block_device_mapping": {
+                "/dev/xvda": {
+                    "delete_on_termination": true, 
+                    "status": "attached", 
+                    "volume_id": "vol-01076229c2424d264"
+                }
+            }, 
+            "dns_name": "ec2-34-223-235-225.us-west-2.compute.amazonaws.com", 
+            "ebs_optimized": false, 
+            "groups": {
+                "sg-6f41c215": "default"
+            }, 
+            "hypervisor": "xen", 
+            "id": "i-02b43174f19da6f90", 
+            "image_id": "ami-e689729e", 
+            "instance_type": "t2.micro", 
+            "kernel": null, 
+            "key_name": "ec2key", 
+            "launch_time": "2017-10-16T08:11:48.000Z", 
+            "placement": "us-west-2a", 
+            "private_dns_name": "ip-172-31-19-227.us-west-2.compute.internal", 
+            "private_ip": "172.31.19.227", 
+            "public_dns_name": "ec2-34-223-235-225.us-west-2.compute.amazonaws.com", 
+            "public_ip": "34.223.235.225", 
+            "ramdisk": null, 
+            "region": "us-west-2", 
+            "root_device_name": "/dev/xvda", 
+            "root_device_type": "ebs", 
+            "state": "running", 
+            "state_code": 16, 
+            "tags": {}, 
+            "tenancy": "default", 
+            "virtualization_type": "hvm"
+        }
+    ], 
+    "invocation": {
+        "module_args": {
+            "assign_public_ip": false, 
+            "aws_access_key": null, 
+            "aws_secret_key": null, 
+            "count": 1, 
+            "count_tag": null, 
+            "ebs_optimized": false, 
+            "ec2_url": null, 
+            "exact_count": null, 
+            "group": null, 
+            "group_id": [
+                "sg-6f41c215"
+            ], 
+            "id": null, 
+            "image": "ami-e689729e", 
+            "instance_ids": null, 
+            "instance_initiated_shutdown_behavior": null, 
+            "instance_profile_name": null, 
+            "instance_tags": null, 
+            "instance_type": "t2.micro", 
+            "kernel": null, 
+            "key_name": "ec2key", 
+            "keypair": "ec2key", 
+            "monitoring": false, 
+            "network_interfaces": null, 
+            "placement_group": null, 
+            "private_ip": null, 
+            "profile": null, 
+            "ramdisk": null, 
+            "region": "us-west-2", 
+            "security_token": null, 
+            "source_dest_check": true, 
+            "spot_launch_group": null, 
+            "spot_price": null, 
+            "spot_type": "one-time", 
+            "spot_wait_timeout": "600", 
+            "state": "present", 
+            "tenancy": "default", 
+            "termination_protection": null, 
+            "user_data": null, 
+            "validate_certs": true, 
+            "volumes": null, 
+            "vpc_subnet_id": null, 
+            "wait": true, 
+            "wait_timeout": "300", 
+            "zone": null
+        }
+    }, 
+    "tagged_instances": []
+}
+2017-10-16 08:12:09,314 p=3036 u=root |  TASK [instance : Add all instance public IPs to host group] ************************************
+2017-10-16 08:12:09,314 p=3036 u=root |  task path: /home/centos/ansible_demo/cdproject/project/roles/instance/tasks/main.yml:13
+2017-10-16 08:12:09,333 p=3036 u=root |  creating host via 'add_host': hostname=34.223.235.225
+2017-10-16 08:12:09,337 p=3036 u=root |  changed: [localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-19-227.us-west-2.compute.internal', u'public_ip': u'34.223.235.225', u'private_ip': u'172.31.19.227', u'id': u'i-02b43174f19da6f90', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/xvda': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-01076229c2424d264'}}, u'key_name': u'ec2key', u'image_id': u'ami-e689729e', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-34-223-235-225.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-34-223-235-225.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-16T08:11:48.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/xvda', u'hypervisor': u'xen'}) => {
+    "add_host": {
+        "groups": [
+            "ec2hosts"
+        ], 
+        "host_name": "34.223.235.225", 
+        "host_vars": {
+            "ansible_ssh_port": "22", 
+            "ansible_ssh_user": "ec2-user", 
+            "host_key_checking": "False"
+        }
+    }, 
+    "changed": true, 
+    "item": {
+        "ami_launch_index": "0", 
+        "architecture": "x86_64", 
+        "block_device_mapping": {
+            "/dev/xvda": {
+                "delete_on_termination": true, 
+                "status": "attached", 
+                "volume_id": "vol-01076229c2424d264"
+            }
+        }, 
+        "dns_name": "ec2-34-223-235-225.us-west-2.compute.amazonaws.com", 
+        "ebs_optimized": false, 
+        "groups": {
+            "sg-6f41c215": "default"
+        }, 
+        "hypervisor": "xen", 
+        "id": "i-02b43174f19da6f90", 
+        "image_id": "ami-e689729e", 
+        "instance_type": "t2.micro", 
+        "kernel": null, 
+        "key_name": "ec2key", 
+        "launch_time": "2017-10-16T08:11:48.000Z", 
+        "placement": "us-west-2a", 
+        "private_dns_name": "ip-172-31-19-227.us-west-2.compute.internal", 
+        "private_ip": "172.31.19.227", 
+        "public_dns_name": "ec2-34-223-235-225.us-west-2.compute.amazonaws.com", 
+        "public_ip": "34.223.235.225", 
+        "ramdisk": null, 
+        "region": "us-west-2", 
+        "root_device_name": "/dev/xvda", 
+        "root_device_type": "ebs", 
+        "state": "running", 
+        "state_code": 16, 
+        "tags": {}, 
+        "tenancy": "default", 
+        "virtualization_type": "hvm"
+    }
+}
+2017-10-16 08:12:09,346 p=3036 u=root |  TASK [instance : Wait for SSH to come up] ******************************************************
+2017-10-16 08:12:09,346 p=3036 u=root |  task path: /home/centos/ansible_demo/cdproject/project/roles/instance/tasks/main.yml:22
+2017-10-16 08:12:09,460 p=3036 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/utilities/logic/wait_for.py
+2017-10-16 08:13:09,633 p=3036 u=root |  ok: [localhost -> localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-19-227.us-west-2.compute.internal', u'public_ip': u'34.223.235.225', u'private_ip': u'172.31.19.227', u'id': u'i-02b43174f19da6f90', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/xvda': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-01076229c2424d264'}}, u'key_name': u'ec2key', u'image_id': u'ami-e689729e', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-34-223-235-225.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-34-223-235-225.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-16T08:11:48.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/xvda', u'hypervisor': u'xen'}) => {
+    "changed": false, 
+    "elapsed": 60, 
+    "invocation": {
+        "module_args": {
+            "active_connection_states": [
+                "ESTABLISHED", 
+                "SYN_SENT", 
+                "SYN_RECV", 
+                "FIN_WAIT1", 
+                "FIN_WAIT2", 
+                "TIME_WAIT"
+            ], 
+            "connect_timeout": 5, 
+            "delay": 60, 
+            "exclude_hosts": null, 
+            "host": "34.223.235.225", 
+            "path": null, 
+            "port": 22, 
+            "search_regex": null, 
+            "sleep": 1, 
+            "state": "started", 
+            "timeout": 320
+        }
+    }, 
+    "item": {
+        "ami_launch_index": "0", 
+        "architecture": "x86_64", 
+        "block_device_mapping": {
+            "/dev/xvda": {
+                "delete_on_termination": true, 
+                "status": "attached", 
+                "volume_id": "vol-01076229c2424d264"
+            }
+        }, 
+        "dns_name": "ec2-34-223-235-225.us-west-2.compute.amazonaws.com", 
+        "ebs_optimized": false, 
+        "groups": {
+            "sg-6f41c215": "default"
+        }, 
+        "hypervisor": "xen", 
+        "id": "i-02b43174f19da6f90", 
+        "image_id": "ami-e689729e", 
+        "instance_type": "t2.micro", 
+        "kernel": null, 
+        "key_name": "ec2key", 
+        "launch_time": "2017-10-16T08:11:48.000Z", 
+        "placement": "us-west-2a", 
+        "private_dns_name": "ip-172-31-19-227.us-west-2.compute.internal", 
+        "private_ip": "172.31.19.227", 
+        "public_dns_name": "ec2-34-223-235-225.us-west-2.compute.amazonaws.com", 
+        "public_ip": "34.223.235.225", 
+        "ramdisk": null, 
+        "region": "us-west-2", 
+        "root_device_name": "/dev/xvda", 
+        "root_device_type": "ebs", 
+        "state": "running", 
+        "state_code": 16, 
+        "tags": {}, 
+        "tenancy": "default", 
+        "virtualization_type": "hvm"
+    }, 
+    "path": null, 
+    "port": 22, 
+    "search_regex": null, 
+    "state": "started"
+}
+2017-10-16 08:13:09,634 p=3036 u=root |  META: ran handlers
+2017-10-16 08:13:09,634 p=3036 u=root |  META: ran handlers
+2017-10-16 08:13:09,641 p=3036 u=root |  PLAY [Install Tomcat & Deploy files] ***********************************************************
+2017-10-16 08:13:09,647 p=3036 u=root |  META: ran handlers
+2017-10-16 08:13:09,650 p=3036 u=root |  TASK [firewalld : Install firewalld] ***********************************************************
+2017-10-16 08:13:09,650 p=3036 u=root |  task path: /home/centos/ansible_demo/cdproject/project/roles/firewalld/tasks/main.yml:3
+2017-10-16 08:13:09,668 p=3036 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/system/setup.py
+2017-10-16 08:13:09,743 p=3036 u=root |  fatal: [34.223.235.225]: UNREACHABLE! => {
+    "changed": false, 
+    "msg": "Failed to connect to the host via ssh: OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket \"/root/.ansible/cp/8f7f39b620\" does not exist\r\ndebug2: resolving \"34.223.235.225\" port 22\r\ndebug2: ssh_connect_direct: needpriv 0\r\ndebug1: Connecting to 34.223.235.225 [34.223.235.225] port 22.\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug1: fd 3 clearing O_NONBLOCK\r\ndebug1: Connection established.\r\ndebug3: timeout: 10000 ms remain after connect\r\ndebug1: permanently_set_uid: 0/0\r\ndebug1: key_load_public: No such file or directory\r\ndebug1: identity file /root/.ssh/id_rsa type -1\r\ndebug1: key_load_public: No such file or directory\r\ndebug1: identity file /root/.ssh/id_rsa-cert type -1\r\ndebug1: key_load_public: No such file or directory\r\ndebug1: identity file /root/.ssh/id_dsa type -1\r\ndebug1: key_load_public: No such file or directory\r\ndebug1: identity file /root/.ssh/id_dsa-cert type -1\r\ndebug1: key_load_public: No such file or directory\r\ndebug1: identity file /root/.ssh/id_ecdsa type -1\r\ndebug1: key_load_public: No such file or directory\r\ndebug1: identity file /root/.ssh/id_ecdsa-cert type -1\r\ndebug1: key_load_public: No such file or directory\r\ndebug1: identity file /root/.ssh/id_ed25519 type -1\r\ndebug1: key_load_public: No such file or directory\r\ndebug1: identity file /root/.ssh/id_ed25519-cert type -1\r\ndebug1: Enabling compatibility mode for protocol 2.0\r\ndebug1: Local version string SSH-2.0-OpenSSH_7.4\r\ndebug1: Remote protocol version 2.0, remote software version OpenSSH_7.4\r\ndebug1: match: OpenSSH_7.4 pat OpenSSH* compat 0x04000000\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug1: Authenticating to 34.223.235.225:22 as 'ec2-user'\r\ndebug3: hostkeys_foreach: reading file \"/root/.ssh/known_hosts\"\r\ndebug3: send packet: type 20\r\ndebug1: SSH2_MSG_KEXINIT sent\r\ndebug3: receive packet: type 20\r\ndebug1: SSH2_MSG_KEXINIT received\r\ndebug2: local client KEXINIT proposal\r\ndebug2: KEX algorithms: curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha256,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1,ext-info-c\r\ndebug2: host key algorithms: ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521-cert-v01@openssh.com,ssh-ed25519-cert-v01@openssh.com,ssh-rsa-cert-v01@openssh.com,ssh-dss-cert-v01@openssh.com,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,ssh-ed25519,rsa-sha2-512,rsa-sha2-256,ssh-rsa,ssh-dss\r\ndebug2: ciphers ctos: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com,aes128-cbc,aes192-cbc,aes256-cbc\r\ndebug2: ciphers stoc: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com,aes128-cbc,aes192-cbc,aes256-cbc\r\ndebug2: MACs ctos: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1\r\ndebug2: MACs stoc: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1\r\ndebug2: compression ctos: zlib@openssh.com,zlib,none\r\ndebug2: compression stoc: zlib@openssh.com,zlib,none\r\ndebug2: languages ctos: \r\ndebug2: languages stoc: \r\ndebug2: first_kex_follows 0 \r\ndebug2: reserved 0 \r\ndebug2: peer server KEXINIT proposal\r\ndebug2: KEX algorithms: curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha256,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1\r\ndebug2: host key algorithms: ssh-rsa,rsa-sha2-512,rsa-sha2-256,ecdsa-sha2-nistp256,ssh-ed25519\r\ndebug2: ciphers ctos: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com,aes128-cbc,aes192-cbc,aes256-cbc,blowfish-cbc,cast128-cbc,3des-cbc\r\ndebug2: ciphers stoc: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com,aes128-cbc,aes192-cbc,aes256-cbc,blowfish-cbc,cast128-cbc,3des-cbc\r\ndebug2: MACs ctos: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1\r\ndebug2: MACs stoc: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1\r\ndebug2: compression ctos: none,zlib@openssh.com\r\ndebug2: compression stoc: none,zlib@openssh.com\r\ndebug2: languages ctos: \r\ndebug2: languages stoc: \r\ndebug2: first_kex_follows 0 \r\ndebug2: reserved 0 \r\ndebug1: kex: algorithm: curve25519-sha256\r\ndebug1: kex: host key algorithm: ecdsa-sha2-nistp256\r\ndebug1: kex: server->client cipher: chacha20-poly1305@openssh.com MAC: <implicit> compression: zlib@openssh.com\r\ndebug1: kex: client->server cipher: chacha20-poly1305@openssh.com MAC: <implicit> compression: zlib@openssh.com\r\ndebug1: kex: curve25519-sha256 need=64 dh_need=64\r\ndebug1: kex: curve25519-sha256 need=64 dh_need=64\r\ndebug3: send packet: type 30\r\ndebug1: expecting SSH2_MSG_KEX_ECDH_REPLY\r\ndebug3: receive packet: type 31\r\ndebug1: Server host key: ecdsa-sha2-nistp256 SHA256:zvZ8bCwDPsDVwbL4vJ0m34sPTpChT3/gB4olCgqWupI\r\ndebug3: hostkeys_foreach: reading file \"/root/.ssh/known_hosts\"\r\nWarning: Permanently added '34.223.235.225' (ECDSA) to the list of known hosts.\r\ndebug3: send packet: type 21\r\ndebug2: set_newkeys: mode 1\r\ndebug1: rekey after 134217728 blocks\r\ndebug1: SSH2_MSG_NEWKEYS sent\r\ndebug1: expecting SSH2_MSG_NEWKEYS\r\ndebug3: receive packet: type 21\r\ndebug1: SSH2_MSG_NEWKEYS received\r\ndebug2: set_newkeys: mode 0\r\ndebug1: rekey after 134217728 blocks\r\ndebug2: key: /root/.ssh/id_rsa ((nil))\r\ndebug2: key: /root/.ssh/id_dsa ((nil))\r\ndebug2: key: /root/.ssh/id_ecdsa ((nil))\r\ndebug2: key: /root/.ssh/id_ed25519 ((nil))\r\ndebug3: send packet: type 5\r\ndebug3: receive packet: type 7\r\ndebug1: SSH2_MSG_EXT_INFO received\r\ndebug1: kex_input_ext_info: server-sig-algs=<rsa-sha2-256,rsa-sha2-512>\r\ndebug3: receive packet: type 6\r\ndebug2: service_accept: ssh-userauth\r\ndebug1: SSH2_MSG_SERVICE_ACCEPT received\r\ndebug3: send packet: type 50\r\ndebug3: receive packet: type 51\r\ndebug1: Authentications that can continue: publickey\r\ndebug3: start over, passed a different list publickey\r\ndebug3: preferred gssapi-with-mic,gssapi-keyex,hostbased,publickey\r\ndebug3: authmethod_lookup publickey\r\ndebug3: remaining preferred: ,gssapi-keyex,hostbased,publickey\r\ndebug3: authmethod_is_enabled publickey\r\ndebug1: Next authentication method: publickey\r\ndebug1: Trying private key: /root/.ssh/id_rsa\r\ndebug3: no such identity: /root/.ssh/id_rsa: No such file or directory\r\ndebug1: Trying private key: /root/.ssh/id_dsa\r\ndebug3: no such identity: /root/.ssh/id_dsa: No such file or directory\r\ndebug1: Trying private key: /root/.ssh/id_ecdsa\r\ndebug3: no such identity: /root/.ssh/id_ecdsa: No such file or directory\r\ndebug1: Trying private key: /root/.ssh/id_ed25519\r\ndebug3: no such identity: /root/.ssh/id_ed25519: No such file or directory\r\ndebug2: we did not send a packet, disable method\r\ndebug1: No more authentication methods to try.\r\nPermission denied (publickey).\r\n", 
+    "unreachable": true
+}
+2017-10-16 08:13:09,743 p=3036 u=root |  	to retry, use: --limit @/home/centos/ansible_demo/cdproject/project/site.retry
+
+2017-10-16 08:13:09,744 p=3036 u=root |  PLAY RECAP *************************************************************************************
+2017-10-16 08:13:09,744 p=3036 u=root |  34.223.235.225             : ok=0    changed=0    unreachable=1    failed=0   
+2017-10-16 08:13:09,744 p=3036 u=root |  localhost                  : ok=4    changed=2    unreachable=0    failed=0   
+2017-10-16 08:20:48,995 p=3167 u=root |  PLAY [Spinup Instance] *********************************************************************************************
+2017-10-16 08:20:49,015 p=3167 u=root |  TASK [Gathering Facts] *********************************************************************************************
+2017-10-16 08:20:49,522 p=3167 u=root |  ok: [localhost]
+2017-10-16 08:20:49,528 p=3167 u=root |  TASK [instance : Launching an EC2 Instance] ************************************************************************
+2017-10-16 08:21:06,531 p=3167 u=root |  changed: [localhost -> localhost]
+2017-10-16 08:21:06,534 p=3167 u=root |  TASK [instance : Add all instance public IPs to host group] ********************************************************
+2017-10-16 08:21:06,557 p=3167 u=root |  changed: [localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-21-185.us-west-2.compute.internal', u'public_ip': u'34.214.248.71', u'private_ip': u'172.31.21.185', u'id': u'i-094ced03616ee0bfc', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/xvda': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-0afd21d5ed8f8e019'}}, u'key_name': u'ec2key', u'image_id': u'ami-e689729e', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-34-214-248-71.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-34-214-248-71.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-16T08:20:50.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/xvda', u'hypervisor': u'xen'})
+2017-10-16 08:21:06,566 p=3167 u=root |  TASK [instance : Wait for SSH to come up] **************************************************************************
+2017-10-16 08:22:06,846 p=3167 u=root |  ok: [localhost -> localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-21-185.us-west-2.compute.internal', u'public_ip': u'34.214.248.71', u'private_ip': u'172.31.21.185', u'id': u'i-094ced03616ee0bfc', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/xvda': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-0afd21d5ed8f8e019'}}, u'key_name': u'ec2key', u'image_id': u'ami-e689729e', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-34-214-248-71.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-34-214-248-71.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-16T08:20:50.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/xvda', u'hypervisor': u'xen'})
+2017-10-16 08:22:06,854 p=3167 u=root |  PLAY [Install Tomcat & Deploy files] *******************************************************************************
+2017-10-16 08:22:06,863 p=3167 u=root |  TASK [firewalld : Install firewalld] *******************************************************************************
+2017-10-16 08:22:06,960 p=3167 u=root |  fatal: [34.214.248.71]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Warning: Permanently added '34.214.248.71' (ECDSA) to the list of known hosts.\r\nPermission denied (publickey).\r\n", "unreachable": true}
+2017-10-16 08:22:06,961 p=3167 u=root |  	to retry, use: --limit @/home/centos/ansible_demo/cdproject/project/site.retry
+
+2017-10-16 08:22:06,961 p=3167 u=root |  PLAY RECAP *********************************************************************************************************
+2017-10-16 08:22:06,961 p=3167 u=root |  34.214.248.71              : ok=0    changed=0    unreachable=1    failed=0   
+2017-10-16 08:22:06,961 p=3167 u=root |  localhost                  : ok=4    changed=2    unreachable=0    failed=0   
+2017-10-16 08:33:16,124 p=3327 u=root |  PLAY [Spinup Instance] *********************************************************************************************
+2017-10-16 08:33:16,145 p=3327 u=root |  TASK [Gathering Facts] *********************************************************************************************
+2017-10-16 08:33:16,606 p=3327 u=root |  ok: [localhost]
+2017-10-16 08:33:16,611 p=3327 u=root |  TASK [instance : Launching an EC2 Instance] ************************************************************************
+2017-10-16 08:33:38,323 p=3327 u=root |  changed: [localhost -> localhost]
+2017-10-16 08:33:38,326 p=3327 u=root |  TASK [instance : Add all instance public IPs to host group] ********************************************************
+2017-10-16 08:33:38,348 p=3327 u=root |  changed: [localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-23-21.us-west-2.compute.internal', u'public_ip': u'34.210.207.24', u'private_ip': u'172.31.23.21', u'id': u'i-09406793afa1c8761', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/xvda': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-08efccad7d5f285b2'}}, u'key_name': u'ec2key', u'image_id': u'ami-e689729e', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-34-210-207-24.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-34-210-207-24.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-16T08:33:17.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/xvda', u'hypervisor': u'xen'})
+2017-10-16 08:33:38,358 p=3327 u=root |  TASK [instance : Wait for SSH to come up] **************************************************************************
+2017-10-16 08:34:38,620 p=3327 u=root |  ok: [localhost -> localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-23-21.us-west-2.compute.internal', u'public_ip': u'34.210.207.24', u'private_ip': u'172.31.23.21', u'id': u'i-09406793afa1c8761', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/xvda': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-08efccad7d5f285b2'}}, u'key_name': u'ec2key', u'image_id': u'ami-e689729e', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-34-210-207-24.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-34-210-207-24.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-16T08:33:17.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/xvda', u'hypervisor': u'xen'})
+2017-10-16 08:34:38,628 p=3327 u=root |  PLAY [Install Tomcat & Deploy files] *******************************************************************************
+2017-10-16 08:34:38,636 p=3327 u=root |  TASK [firewalld : Install firewalld] *******************************************************************************
+2017-10-16 08:34:40,063 p=3327 u=root |  fatal: [34.210.207.24]: FAILED! => {"changed": false, "failed": true, "msg": "No package matching 'firewalld' found available, installed or updated", "rc": 126, "results": ["No package matching 'firewalld' found available, installed or updated"]}
+2017-10-16 08:34:40,064 p=3327 u=root |  	to retry, use: --limit @/home/centos/ansible_demo/cdproject/project/site.retry
+
+2017-10-16 08:34:40,065 p=3327 u=root |  PLAY RECAP *********************************************************************************************************
+2017-10-16 08:34:40,065 p=3327 u=root |  34.210.207.24              : ok=0    changed=0    unreachable=0    failed=1   
+2017-10-16 08:34:40,065 p=3327 u=root |  localhost                  : ok=4    changed=2    unreachable=0    failed=0   
+2017-10-16 19:24:33,219 p=1148 u=root |  PLAY [Spinup Instance] *********************************************************************************************
+2017-10-16 19:24:33,277 p=1148 u=root |  TASK [Gathering Facts] *********************************************************************************************
+2017-10-16 19:24:33,791 p=1148 u=root |  ok: [localhost]
+2017-10-16 19:24:33,797 p=1148 u=root |  TASK [instance : Launching an EC2 Instance] ************************************************************************
+2017-10-16 19:24:50,971 p=1148 u=root |  changed: [localhost -> localhost]
+2017-10-16 19:24:50,975 p=1148 u=root |  TASK [instance : Add all instance public IPs to host group] ********************************************************
+2017-10-16 19:24:50,999 p=1148 u=root |  changed: [localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-31-197.us-west-2.compute.internal', u'public_ip': u'52.27.156.181', u'private_ip': u'172.31.31.197', u'id': u'i-02a5bbcadc02f729d', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/xvda': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-0c90ad3b07725b7bd'}}, u'key_name': u'ec2key', u'image_id': u'ami-e689729e', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-52-27-156-181.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-52-27-156-181.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-16T19:24:34.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/xvda', u'hypervisor': u'xen'})
+2017-10-16 19:24:51,009 p=1148 u=root |  TASK [instance : Wait for SSH to come up] **************************************************************************
+2017-10-16 19:25:51,281 p=1148 u=root |  ok: [localhost -> localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-31-197.us-west-2.compute.internal', u'public_ip': u'52.27.156.181', u'private_ip': u'172.31.31.197', u'id': u'i-02a5bbcadc02f729d', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/xvda': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-0c90ad3b07725b7bd'}}, u'key_name': u'ec2key', u'image_id': u'ami-e689729e', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-52-27-156-181.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-52-27-156-181.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-16T19:24:34.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/xvda', u'hypervisor': u'xen'})
+2017-10-16 19:25:51,289 p=1148 u=root |  PLAY [Install Tomcat & Deploy files] *******************************************************************************
+2017-10-16 19:25:51,298 p=1148 u=root |  TASK [firewalld : Install firewalld] *******************************************************************************
+2017-10-16 19:25:52,745 p=1148 u=root |  fatal: [52.27.156.181]: FAILED! => {"changed": false, "failed": true, "msg": "No package matching 'firewalld' found available, installed or updated", "rc": 126, "results": ["No package matching 'firewalld' found available, installed or updated"]}
+2017-10-16 19:25:52,746 p=1148 u=root |  	to retry, use: --limit @/home/centos/ansible_demo/cdproject/project/site.retry
+
+2017-10-16 19:25:52,747 p=1148 u=root |  PLAY RECAP *********************************************************************************************************
+2017-10-16 19:25:52,747 p=1148 u=root |  52.27.156.181              : ok=0    changed=0    unreachable=0    failed=1   
+2017-10-16 19:25:52,747 p=1148 u=root |  localhost                  : ok=4    changed=2    unreachable=0    failed=0   
+2017-10-16 19:30:32,361 p=1270 u=root |  PLAY [Spinup Instance] *********************************************************************************************
+2017-10-16 19:30:32,383 p=1270 u=root |  TASK [Gathering Facts] *********************************************************************************************
+2017-10-16 19:30:32,859 p=1270 u=root |  ok: [localhost]
+2017-10-16 19:30:32,865 p=1270 u=root |  TASK [instance : Launching an EC2 Instance] ************************************************************************
+2017-10-16 19:30:54,512 p=1270 u=root |  changed: [localhost -> localhost]
+2017-10-16 19:30:54,515 p=1270 u=root |  TASK [instance : Add all instance public IPs to host group] ********************************************************
+2017-10-16 19:30:54,539 p=1270 u=root |  changed: [localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-22-214.us-west-2.compute.internal', u'public_ip': u'52.25.230.111', u'private_ip': u'172.31.22.214', u'id': u'i-0f1f6320bf5031ad9', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/xvda': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-0ffb0a7c0d75d33f9'}}, u'key_name': u'ec2key', u'image_id': u'ami-e689729e', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-52-25-230-111.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-52-25-230-111.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-16T19:30:33.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/xvda', u'hypervisor': u'xen'})
+2017-10-16 19:30:54,549 p=1270 u=root |  TASK [instance : Wait for SSH to come up] **************************************************************************
+2017-10-16 19:31:54,818 p=1270 u=root |  ok: [localhost -> localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-22-214.us-west-2.compute.internal', u'public_ip': u'52.25.230.111', u'private_ip': u'172.31.22.214', u'id': u'i-0f1f6320bf5031ad9', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/xvda': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-0ffb0a7c0d75d33f9'}}, u'key_name': u'ec2key', u'image_id': u'ami-e689729e', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-52-25-230-111.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-52-25-230-111.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-16T19:30:33.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/xvda', u'hypervisor': u'xen'})
+2017-10-16 19:31:54,826 p=1270 u=root |  PLAY [Install Tomcat & Deploy files] *******************************************************************************
+2017-10-16 19:31:54,833 p=1270 u=root |  TASK [selinux : Download EPEL Repo - Centos/RHEL 6] ****************************************************************
+2017-10-16 19:31:54,849 p=1270 u=root |  fatal: [52.25.230.111]: FAILED! => {"failed": true, "msg": "The conditional check 'ansible_os_family == 'RedHat' and ansible_distribution_major_version == '6'' failed. The error was: error while evaluating conditional (ansible_os_family == 'RedHat' and ansible_distribution_major_version == '6'): 'ansible_os_family' is undefined\n\nThe error appears to have been in '/home/centos/ansible_demo/cdproject/project/roles/selinux/tasks/main.yml': line 3, column 3, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n# Download and install EPEL for Centos/RHEL version 6\n- name: Download EPEL Repo - Centos/RHEL 6\n  ^ here\n"}
+2017-10-16 19:31:54,850 p=1270 u=root |  	to retry, use: --limit @/home/centos/ansible_demo/cdproject/project/site.retry
+
+2017-10-16 19:31:54,850 p=1270 u=root |  PLAY RECAP *********************************************************************************************************
+2017-10-16 19:31:54,850 p=1270 u=root |  52.25.230.111              : ok=0    changed=0    unreachable=0    failed=1   
+2017-10-16 19:31:54,850 p=1270 u=root |  localhost                  : ok=4    changed=2    unreachable=0    failed=0   
+2017-10-16 19:38:41,935 p=1386 u=root |  PLAY [Spinup Instance] *********************************************************************************************
+2017-10-16 19:38:41,956 p=1386 u=root |  TASK [Gathering Facts] *********************************************************************************************
+2017-10-16 19:38:42,451 p=1386 u=root |  ok: [localhost]
+2017-10-16 19:38:42,457 p=1386 u=root |  TASK [instance : Launching an EC2 Instance] ************************************************************************
+2017-10-16 19:39:04,268 p=1386 u=root |  changed: [localhost -> localhost]
+2017-10-16 19:39:04,272 p=1386 u=root |  TASK [instance : Add all instance public IPs to host group] ********************************************************
+2017-10-16 19:39:04,295 p=1386 u=root |  changed: [localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-30-206.us-west-2.compute.internal', u'public_ip': u'34.223.210.33', u'private_ip': u'172.31.30.206', u'id': u'i-0a9e443e34b1a63c8', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/xvda': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-0d8413067cdb614dc'}}, u'key_name': u'ec2key', u'image_id': u'ami-e689729e', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-34-223-210-33.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-34-223-210-33.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-16T19:38:43.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/xvda', u'hypervisor': u'xen'})
+2017-10-16 19:39:04,306 p=1386 u=root |  TASK [instance : Wait for SSH to come up] **************************************************************************
+2017-10-16 19:40:04,598 p=1386 u=root |  ok: [localhost -> localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-30-206.us-west-2.compute.internal', u'public_ip': u'34.223.210.33', u'private_ip': u'172.31.30.206', u'id': u'i-0a9e443e34b1a63c8', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/xvda': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-0d8413067cdb614dc'}}, u'key_name': u'ec2key', u'image_id': u'ami-e689729e', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-34-223-210-33.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-34-223-210-33.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-16T19:38:43.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/xvda', u'hypervisor': u'xen'})
+2017-10-16 19:40:04,604 p=1386 u=root |  PLAY [Install Tomcat & Deploy files] *******************************************************************************
+2017-10-16 19:40:04,611 p=1386 u=root |  TASK [selinux : Download EPEL Repo - Centos/RHEL 6] ****************************************************************
+2017-10-16 19:40:04,627 p=1386 u=root |  fatal: [34.223.210.33]: FAILED! => {"failed": true, "msg": "The conditional check 'ansible_os_family == 'RedHat' and ansible_distribution_major_version == '6'' failed. The error was: error while evaluating conditional (ansible_os_family == 'RedHat' and ansible_distribution_major_version == '6'): 'ansible_os_family' is undefined\n\nThe error appears to have been in '/home/centos/ansible_demo/cdproject/project/roles/selinux/tasks/main.yml': line 3, column 3, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n# Download and install EPEL for Centos/RHEL version 6\n- name: Download EPEL Repo - Centos/RHEL 6\n  ^ here\n"}
+2017-10-16 19:40:04,628 p=1386 u=root |  	to retry, use: --limit @/home/centos/ansible_demo/cdproject/project/site.retry
+
+2017-10-16 19:40:04,628 p=1386 u=root |  PLAY RECAP *********************************************************************************************************
+2017-10-16 19:40:04,628 p=1386 u=root |  34.223.210.33              : ok=0    changed=0    unreachable=0    failed=1   
+2017-10-16 19:40:04,628 p=1386 u=root |  localhost                  : ok=4    changed=2    unreachable=0    failed=0   
+2017-10-16 19:48:26,246 p=1523 u=root |  PLAY [Spinup Instance] *********************************************************************************************
+2017-10-16 19:48:26,267 p=1523 u=root |  TASK [Gathering Facts] *********************************************************************************************
+2017-10-16 19:48:26,711 p=1523 u=root |  ok: [localhost]
+2017-10-16 19:48:26,716 p=1523 u=root |  TASK [instance : Launching an EC2 Instance] ************************************************************************
+2017-10-16 19:48:43,498 p=1523 u=root |  changed: [localhost -> localhost]
+2017-10-16 19:48:43,501 p=1523 u=root |  TASK [instance : Add all instance public IPs to host group] ********************************************************
+2017-10-16 19:48:43,525 p=1523 u=root |  changed: [localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-17-142.us-west-2.compute.internal', u'public_ip': u'52.39.142.106', u'private_ip': u'172.31.17.142', u'id': u'i-0cb8a96be6335d3b3', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/sda1': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-09421c204b46f553f'}}, u'key_name': u'ec2key', u'image_id': u'ami-9fa343e7', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-52-39-142-106.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-52-39-142-106.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-16T19:48:27.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/sda1', u'hypervisor': u'xen'})
+2017-10-16 19:48:43,534 p=1523 u=root |  TASK [instance : Wait for SSH to come up] **************************************************************************
+2017-10-16 19:49:43,827 p=1523 u=root |  ok: [localhost -> localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-17-142.us-west-2.compute.internal', u'public_ip': u'52.39.142.106', u'private_ip': u'172.31.17.142', u'id': u'i-0cb8a96be6335d3b3', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/sda1': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-09421c204b46f553f'}}, u'key_name': u'ec2key', u'image_id': u'ami-9fa343e7', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-52-39-142-106.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-52-39-142-106.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-16T19:48:27.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/sda1', u'hypervisor': u'xen'})
+2017-10-16 19:49:43,836 p=1523 u=root |  PLAY [Install Tomcat & Deploy files] *******************************************************************************
+2017-10-16 19:49:43,842 p=1523 u=root |  TASK [selinux : Download EPEL Repo - Centos/RHEL 6] ****************************************************************
+2017-10-16 19:49:43,859 p=1523 u=root |  fatal: [52.39.142.106]: FAILED! => {"failed": true, "msg": "The conditional check 'ansible_os_family == 'RedHat' and ansible_distribution_major_version == '6'' failed. The error was: error while evaluating conditional (ansible_os_family == 'RedHat' and ansible_distribution_major_version == '6'): 'ansible_os_family' is undefined\n\nThe error appears to have been in '/home/centos/ansible_demo/cdproject/project/roles/selinux/tasks/main.yml': line 3, column 3, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n# Download and install EPEL for Centos/RHEL version 6\n- name: Download EPEL Repo - Centos/RHEL 6\n  ^ here\n"}
+2017-10-16 19:49:43,860 p=1523 u=root |  	to retry, use: --limit @/home/centos/ansible_demo/cdproject/project/site.retry
+
+2017-10-16 19:49:43,860 p=1523 u=root |  PLAY RECAP *********************************************************************************************************
+2017-10-16 19:49:43,860 p=1523 u=root |  52.39.142.106              : ok=0    changed=0    unreachable=0    failed=1   
+2017-10-16 19:49:43,860 p=1523 u=root |  localhost                  : ok=4    changed=2    unreachable=0    failed=0   
+2017-10-16 19:59:55,315 p=1648 u=root |  PLAY [Spinup Instance] *********************************************************************************************
+2017-10-16 19:59:55,337 p=1648 u=root |  TASK [Gathering Facts] *********************************************************************************************
+2017-10-16 19:59:55,838 p=1648 u=root |  ok: [localhost]
+2017-10-16 19:59:55,844 p=1648 u=root |  TASK [instance : Launching an EC2 Instance] ************************************************************************
+2017-10-16 20:00:22,698 p=1648 u=root |  changed: [localhost -> localhost]
+2017-10-16 20:00:22,701 p=1648 u=root |  TASK [instance : Add all instance public IPs to host group] ********************************************************
+2017-10-16 20:00:22,726 p=1648 u=root |  changed: [localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-28-214.us-west-2.compute.internal', u'public_ip': u'35.166.167.101', u'private_ip': u'172.31.28.214', u'id': u'i-07ac89482fbf37e34', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/sda1': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-02cb99338e2e31a9f'}}, u'key_name': u'ec2key', u'image_id': u'ami-9fa343e7', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-35-166-167-101.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-35-166-167-101.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-16T19:59:56.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/sda1', u'hypervisor': u'xen'})
+2017-10-16 20:00:22,737 p=1648 u=root |  TASK [instance : Wait for SSH to come up] **************************************************************************
+2017-10-16 20:01:23,068 p=1648 u=root |  ok: [localhost -> localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-28-214.us-west-2.compute.internal', u'public_ip': u'35.166.167.101', u'private_ip': u'172.31.28.214', u'id': u'i-07ac89482fbf37e34', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/sda1': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-02cb99338e2e31a9f'}}, u'key_name': u'ec2key', u'image_id': u'ami-9fa343e7', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-35-166-167-101.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-35-166-167-101.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-16T19:59:56.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/sda1', u'hypervisor': u'xen'})
+2017-10-16 20:01:23,076 p=1648 u=root |  PLAY [Install Tomcat & Deploy files] *******************************************************************************
+2017-10-16 20:01:23,082 p=1648 u=root |  TASK [tomcatinstall : Install Java 1.7] ****************************************************************************
+2017-10-16 20:01:57,794 p=1648 u=root |  changed: [35.166.167.101]
+2017-10-16 20:01:57,797 p=1648 u=root |  TASK [tomcatinstall : add group "tomcat"] **************************************************************************
+2017-10-16 20:01:58,212 p=1648 u=root |  changed: [35.166.167.101]
+2017-10-16 20:01:58,214 p=1648 u=root |  TASK [tomcatinstall : add user "tomcat"] ***************************************************************************
+2017-10-16 20:01:58,667 p=1648 u=root |  changed: [35.166.167.101]
+2017-10-16 20:01:58,670 p=1648 u=root |  TASK [tomcatinstall : Download Tomcat] *****************************************************************************
+2017-10-16 20:02:02,729 p=1648 u=root |  changed: [35.166.167.101]
+2017-10-16 20:02:02,732 p=1648 u=root |  TASK [tomcatinstall : Extract archive] *****************************************************************************
+2017-10-16 20:02:03,253 p=1648 u=root |   [WARNING]: Consider using unarchive module rather than running tar
+
+2017-10-16 20:02:03,254 p=1648 u=root |  changed: [35.166.167.101]
+2017-10-16 20:02:03,256 p=1648 u=root |  TASK [tomcatinstall : Symlink install directory] *******************************************************************
+2017-10-16 20:02:03,622 p=1648 u=root |  changed: [35.166.167.101]
+2017-10-16 20:02:03,625 p=1648 u=root |  TASK [tomcatinstall : Change ownership of Tomcat installation] *****************************************************
+2017-10-16 20:02:04,139 p=1648 u=root |  changed: [35.166.167.101]
+2017-10-16 20:02:04,143 p=1648 u=root |  TASK [tomcatinstall : Configure Tomcat server] *********************************************************************
+2017-10-16 20:02:04,878 p=1648 u=root |  changed: [35.166.167.101]
+2017-10-16 20:02:04,880 p=1648 u=root |  TASK [tomcatinstall : Configure Tomcat users] **********************************************************************
+2017-10-16 20:02:05,379 p=1648 u=root |  changed: [35.166.167.101]
+2017-10-16 20:02:05,382 p=1648 u=root |  TASK [tomcatinstall : Install Tomcat init script] ******************************************************************
+2017-10-16 20:02:05,885 p=1648 u=root |  changed: [35.166.167.101]
+2017-10-16 20:02:05,889 p=1648 u=root |  TASK [tomcatinstall : Start Tomcat] ********************************************************************************
+2017-10-16 20:02:07,101 p=1648 u=root |   [WARNING]: The service (tomcat) is actually an init script but the system is managed by systemd
+
+2017-10-16 20:02:07,102 p=1648 u=root |  changed: [35.166.167.101]
+2017-10-16 20:02:07,104 p=1648 u=root |  TASK [tomcatinstall : deploy iptables rules] ***********************************************************************
+2017-10-16 20:02:07,121 p=1648 u=root |  fatal: [35.166.167.101]: FAILED! => {"failed": true, "msg": "The conditional check 'ansible_os_family == 'RedHat' and ansible_distribution_major_version == '6'' failed. The error was: error while evaluating conditional (ansible_os_family == 'RedHat' and ansible_distribution_major_version == '6'): 'ansible_os_family' is undefined\n\nThe error appears to have been in '/home/centos/ansible_demo/cdproject/project/roles/tomcatinstall/tasks/main.yml': line 39, column 3, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n- name: deploy iptables rules\n  ^ here\n"}
+2017-10-16 20:02:07,121 p=1648 u=root |  RUNNING HANDLER [tomcatinstall : restart tomcat] *******************************************************************
+2017-10-16 20:02:07,122 p=1648 u=root |  	to retry, use: --limit @/home/centos/ansible_demo/cdproject/project/site.retry
+
+2017-10-16 20:02:07,122 p=1648 u=root |  PLAY RECAP *********************************************************************************************************
+2017-10-16 20:02:07,122 p=1648 u=root |  35.166.167.101             : ok=11   changed=11   unreachable=0    failed=1   
+2017-10-16 20:02:07,122 p=1648 u=root |  localhost                  : ok=4    changed=2    unreachable=0    failed=0   
+2017-10-16 20:08:48,333 p=1884 u=root |  PLAY [Spinup Instance] *********************************************************************************************
+2017-10-16 20:08:48,355 p=1884 u=root |  TASK [Gathering Facts] *********************************************************************************************
+2017-10-16 20:08:48,825 p=1884 u=root |  ok: [localhost]
+2017-10-16 20:08:48,831 p=1884 u=root |  TASK [instance : Launching an EC2 Instance] ************************************************************************
+2017-10-16 20:09:10,493 p=1884 u=root |  changed: [localhost -> localhost]
+2017-10-16 20:09:10,496 p=1884 u=root |  TASK [instance : Add all instance public IPs to host group] ********************************************************
+2017-10-16 20:09:10,519 p=1884 u=root |  changed: [localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-25-70.us-west-2.compute.internal', u'public_ip': u'34.213.235.175', u'private_ip': u'172.31.25.70', u'id': u'i-066f6ce2535f74c00', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/sda1': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-0474d50462fc1b3a3'}}, u'key_name': u'ec2key', u'image_id': u'ami-9fa343e7', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-34-213-235-175.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-34-213-235-175.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-16T20:08:49.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/sda1', u'hypervisor': u'xen'})
+2017-10-16 20:09:10,528 p=1884 u=root |  TASK [instance : Wait for SSH to come up] **************************************************************************
+2017-10-16 20:10:10,807 p=1884 u=root |  ok: [localhost -> localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-25-70.us-west-2.compute.internal', u'public_ip': u'34.213.235.175', u'private_ip': u'172.31.25.70', u'id': u'i-066f6ce2535f74c00', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/sda1': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-0474d50462fc1b3a3'}}, u'key_name': u'ec2key', u'image_id': u'ami-9fa343e7', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-34-213-235-175.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-34-213-235-175.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-16T20:08:49.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/sda1', u'hypervisor': u'xen'})
+2017-10-16 20:10:10,814 p=1884 u=root |  PLAY [Install Tomcat & Deploy files] *******************************************************************************
+2017-10-16 20:10:10,820 p=1884 u=root |  TASK [tomcatinstall : Install Java 1.7] ****************************************************************************
+2017-10-16 20:10:41,636 p=1884 u=root |  changed: [34.213.235.175]
+2017-10-16 20:10:41,639 p=1884 u=root |  TASK [tomcatinstall : add group "tomcat"] **************************************************************************
+2017-10-16 20:10:42,066 p=1884 u=root |  changed: [34.213.235.175]
+2017-10-16 20:10:42,068 p=1884 u=root |  TASK [tomcatinstall : add user "tomcat"] ***************************************************************************
+2017-10-16 20:10:42,519 p=1884 u=root |  changed: [34.213.235.175]
+2017-10-16 20:10:42,521 p=1884 u=root |  TASK [tomcatinstall : Download Tomcat] *****************************************************************************
+2017-10-16 20:10:45,080 p=1884 u=root |  changed: [34.213.235.175]
+2017-10-16 20:10:45,083 p=1884 u=root |  TASK [tomcatinstall : Extract archive] *****************************************************************************
+2017-10-16 20:10:45,584 p=1884 u=root |   [WARNING]: Consider using unarchive module rather than running tar
+
+2017-10-16 20:10:45,584 p=1884 u=root |  changed: [34.213.235.175]
+2017-10-16 20:10:45,587 p=1884 u=root |  TASK [tomcatinstall : Symlink install directory] *******************************************************************
+2017-10-16 20:10:45,933 p=1884 u=root |  changed: [34.213.235.175]
+2017-10-16 20:10:45,936 p=1884 u=root |  TASK [tomcatinstall : Change ownership of Tomcat installation] *****************************************************
+2017-10-16 20:10:46,432 p=1884 u=root |  changed: [34.213.235.175]
+2017-10-16 20:10:46,435 p=1884 u=root |  TASK [tomcatinstall : Configure Tomcat server] *********************************************************************
+2017-10-16 20:10:47,131 p=1884 u=root |  changed: [34.213.235.175]
+2017-10-16 20:10:47,133 p=1884 u=root |  TASK [tomcatinstall : Configure Tomcat users] **********************************************************************
+2017-10-16 20:10:47,599 p=1884 u=root |  changed: [34.213.235.175]
+2017-10-16 20:10:47,602 p=1884 u=root |  TASK [tomcatinstall : Install Tomcat init script] ******************************************************************
+2017-10-16 20:10:48,078 p=1884 u=root |  changed: [34.213.235.175]
+2017-10-16 20:10:48,081 p=1884 u=root |  TASK [tomcatinstall : Start Tomcat] ********************************************************************************
+2017-10-16 20:10:48,948 p=1884 u=root |   [WARNING]: The service (tomcat) is actually an init script but the system is managed by systemd
+
+2017-10-16 20:10:48,948 p=1884 u=root |  changed: [34.213.235.175]
+2017-10-16 20:10:48,951 p=1884 u=root |  TASK [tomcatinstall : wait for tomcat to start] ********************************************************************
+2017-10-16 20:10:50,428 p=1884 u=root |  ok: [34.213.235.175]
+2017-10-16 20:10:50,428 p=1884 u=root |  RUNNING HANDLER [tomcatinstall : restart tomcat] *******************************************************************
+2017-10-16 20:10:54,367 p=1884 u=root |  changed: [34.213.235.175]
+2017-10-16 20:10:54,368 p=1884 u=root |  PLAY RECAP *********************************************************************************************************
+2017-10-16 20:10:54,368 p=1884 u=root |  34.213.235.175             : ok=13   changed=12   unreachable=0    failed=0   
+2017-10-16 20:10:54,368 p=1884 u=root |  localhost                  : ok=4    changed=2    unreachable=0    failed=0   
+2017-10-16 20:12:22,143 p=2150 u=root |  PLAY [Spinup Instance] *********************************************************************************************
+2017-10-16 20:12:22,164 p=2150 u=root |  TASK [Gathering Facts] *********************************************************************************************
+2017-10-16 20:12:22,637 p=2150 u=root |  ok: [localhost]
+2017-10-16 20:12:22,643 p=2150 u=root |  TASK [instance : Launching an EC2 Instance] ************************************************************************
+2017-10-16 20:12:44,474 p=2150 u=root |  changed: [localhost -> localhost]
+2017-10-16 20:12:44,477 p=2150 u=root |  TASK [instance : Add all instance public IPs to host group] ********************************************************
+2017-10-16 20:12:44,501 p=2150 u=root |  changed: [localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-23-64.us-west-2.compute.internal', u'public_ip': u'34.212.242.189', u'private_ip': u'172.31.23.64', u'id': u'i-09d3b675e58f417eb', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/sda1': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-078de5b706602832a'}}, u'key_name': u'ec2key', u'image_id': u'ami-9fa343e7', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-34-212-242-189.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-34-212-242-189.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-16T20:12:23.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/sda1', u'hypervisor': u'xen'})
+2017-10-16 20:12:44,511 p=2150 u=root |  TASK [instance : Wait for SSH to come up] **************************************************************************
+2017-10-16 20:13:44,805 p=2150 u=root |  ok: [localhost -> localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-23-64.us-west-2.compute.internal', u'public_ip': u'34.212.242.189', u'private_ip': u'172.31.23.64', u'id': u'i-09d3b675e58f417eb', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/sda1': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-078de5b706602832a'}}, u'key_name': u'ec2key', u'image_id': u'ami-9fa343e7', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-34-212-242-189.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-34-212-242-189.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-16T20:12:23.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/sda1', u'hypervisor': u'xen'})
+2017-10-16 20:13:44,813 p=2150 u=root |  PLAY [Install Tomcat & Deploy files] *******************************************************************************
+2017-10-16 20:13:44,818 p=2150 u=root |  TASK [tomcatinstall : Install Java 1.7] ****************************************************************************
+2017-10-16 20:14:15,839 p=2150 u=root |  changed: [34.212.242.189]
+2017-10-16 20:14:15,842 p=2150 u=root |  TASK [tomcatinstall : add group "tomcat"] **************************************************************************
+2017-10-16 20:14:16,286 p=2150 u=root |  changed: [34.212.242.189]
+2017-10-16 20:14:16,289 p=2150 u=root |  TASK [tomcatinstall : add user "tomcat"] ***************************************************************************
+2017-10-16 20:14:16,736 p=2150 u=root |  changed: [34.212.242.189]
+2017-10-16 20:14:16,738 p=2150 u=root |  TASK [tomcatinstall : Download Tomcat] *****************************************************************************
+2017-10-16 20:14:20,113 p=2150 u=root |  changed: [34.212.242.189]
+2017-10-16 20:14:20,115 p=2150 u=root |  TASK [tomcatinstall : Extract archive] *****************************************************************************
+2017-10-16 20:14:20,620 p=2150 u=root |   [WARNING]: Consider using unarchive module rather than running tar
+
+2017-10-16 20:14:20,621 p=2150 u=root |  changed: [34.212.242.189]
+2017-10-16 20:14:20,623 p=2150 u=root |  TASK [tomcatinstall : Symlink install directory] *******************************************************************
+2017-10-16 20:14:20,973 p=2150 u=root |  changed: [34.212.242.189]
+2017-10-16 20:14:20,976 p=2150 u=root |  TASK [tomcatinstall : Change ownership of Tomcat installation] *****************************************************
+2017-10-16 20:14:21,478 p=2150 u=root |  changed: [34.212.242.189]
+2017-10-16 20:14:21,481 p=2150 u=root |  TASK [tomcatinstall : Configure Tomcat server] *********************************************************************
+2017-10-16 20:14:22,198 p=2150 u=root |  changed: [34.212.242.189]
+2017-10-16 20:14:22,200 p=2150 u=root |  TASK [tomcatinstall : Configure Tomcat users] **********************************************************************
+2017-10-16 20:14:22,687 p=2150 u=root |  changed: [34.212.242.189]
+2017-10-16 20:14:22,689 p=2150 u=root |  TASK [tomcatinstall : Install Tomcat init script] ******************************************************************
+2017-10-16 20:14:23,185 p=2150 u=root |  changed: [34.212.242.189]
+2017-10-16 20:14:23,188 p=2150 u=root |  TASK [tomcatinstall : Start Tomcat] ********************************************************************************
+2017-10-16 20:14:24,102 p=2150 u=root |   [WARNING]: The service (tomcat) is actually an init script but the system is managed by systemd
+
+2017-10-16 20:14:24,103 p=2150 u=root |  changed: [34.212.242.189]
+2017-10-16 20:14:24,105 p=2150 u=root |  TASK [tomcatinstall : wait for tomcat to start] ********************************************************************
+2017-10-16 20:14:25,612 p=2150 u=root |  ok: [34.212.242.189]
+2017-10-16 20:14:25,615 p=2150 u=root |  TASK [tomcatinstall : Downloading artifact] ************************************************************************
+2017-10-16 20:14:37,928 p=2150 u=root |  fatal: [34.212.242.189]: FAILED! => {"changed": false, "dest": "/usr/share/tomcat/webapps/", "failed": true, "gid": 1001, "group": "tomcat", "mode": "0755", "msg": "Request failed: <urlopen error timed out>", "owner": "tomcat", "secontext": "unconfined_u:object_r:usr_t:s0", "size": 81, "state": "directory", "uid": 1001, "url": "http://34.207.112.95:8081/nexus-2.14.5-02/content/repositories/releases/org/sonatype/mavenbook/simpleweb/simple-webapp/1.5/simple-webapp-1.5.war"}
+2017-10-16 20:14:37,929 p=2150 u=root |  RUNNING HANDLER [tomcatinstall : restart tomcat] *******************************************************************
+2017-10-16 20:14:37,930 p=2150 u=root |  	to retry, use: --limit @/home/centos/ansible_demo/cdproject/project/site.retry
+
+2017-10-16 20:14:37,930 p=2150 u=root |  PLAY RECAP *********************************************************************************************************
+2017-10-16 20:14:37,930 p=2150 u=root |  34.212.242.189             : ok=12   changed=11   unreachable=0    failed=1   
+2017-10-16 20:14:37,930 p=2150 u=root |  localhost                  : ok=4    changed=2    unreachable=0    failed=0   
+2017-10-17 06:42:46,780 p=1902 u=root |  PLAY [Spinup Instance] ************************************************************************
+2017-10-17 06:42:46,802 p=1902 u=root |  TASK [Gathering Facts] ************************************************************************
+2017-10-17 06:42:47,289 p=1902 u=root |  ok: [localhost]
+2017-10-17 06:42:47,295 p=1902 u=root |  TASK [instance : Launching an EC2 Instance] ***************************************************
+2017-10-17 06:43:09,438 p=1902 u=root |  changed: [localhost -> localhost]
+2017-10-17 06:43:09,441 p=1902 u=root |  TASK [instance : Add all instance public IPs to host group] ***********************************
+2017-10-17 06:43:09,464 p=1902 u=root |  changed: [localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-23-228.us-west-2.compute.internal', u'public_ip': u'34.215.196.7', u'private_ip': u'172.31.23.228', u'id': u'i-02f830e19f31af106', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/sda1': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-0060d4b624cddd323'}}, u'key_name': u'ec2key', u'image_id': u'ami-9fa343e7', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-34-215-196-7.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-34-215-196-7.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-17T06:42:48.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/sda1', u'hypervisor': u'xen'})
+2017-10-17 06:43:09,473 p=1902 u=root |  TASK [instance : Wait for SSH to come up] *****************************************************
+2017-10-17 06:44:09,733 p=1902 u=root |  ok: [localhost -> localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-23-228.us-west-2.compute.internal', u'public_ip': u'34.215.196.7', u'private_ip': u'172.31.23.228', u'id': u'i-02f830e19f31af106', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/sda1': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-0060d4b624cddd323'}}, u'key_name': u'ec2key', u'image_id': u'ami-9fa343e7', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-34-215-196-7.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-34-215-196-7.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-17T06:42:48.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/sda1', u'hypervisor': u'xen'})
+2017-10-17 06:44:09,741 p=1902 u=root |  PLAY [Install Tomcat & Deploy files] **********************************************************
+2017-10-17 06:44:09,746 p=1902 u=root |  TASK [tomcatinstall : Install Java 1.7] *******************************************************
+2017-10-17 06:44:40,868 p=1902 u=root |  changed: [34.215.196.7]
+2017-10-17 06:44:40,871 p=1902 u=root |  TASK [tomcatinstall : add group "tomcat"] *****************************************************
+2017-10-17 06:44:41,284 p=1902 u=root |  changed: [34.215.196.7]
+2017-10-17 06:44:41,286 p=1902 u=root |  TASK [tomcatinstall : add user "tomcat"] ******************************************************
+2017-10-17 06:44:41,718 p=1902 u=root |  changed: [34.215.196.7]
+2017-10-17 06:44:41,720 p=1902 u=root |  TASK [tomcatinstall : Download Tomcat] ********************************************************
+2017-10-17 06:44:45,479 p=1902 u=root |  changed: [34.215.196.7]
+2017-10-17 06:44:45,481 p=1902 u=root |  TASK [tomcatinstall : Extract archive] ********************************************************
+2017-10-17 06:44:45,988 p=1902 u=root |   [WARNING]: Consider using unarchive module rather than running tar
+
+2017-10-17 06:44:45,989 p=1902 u=root |  changed: [34.215.196.7]
+2017-10-17 06:44:45,991 p=1902 u=root |  TASK [tomcatinstall : Symlink install directory] **********************************************
+2017-10-17 06:44:46,339 p=1902 u=root |  changed: [34.215.196.7]
+2017-10-17 06:44:46,342 p=1902 u=root |  TASK [tomcatinstall : Change ownership of Tomcat installation] ********************************
+2017-10-17 06:44:46,853 p=1902 u=root |  changed: [34.215.196.7]
+2017-10-17 06:44:46,856 p=1902 u=root |  TASK [tomcatinstall : Configure Tomcat server] ************************************************
+2017-10-17 06:44:47,569 p=1902 u=root |  changed: [34.215.196.7]
+2017-10-17 06:44:47,571 p=1902 u=root |  TASK [tomcatinstall : Configure Tomcat users] *************************************************
+2017-10-17 06:44:48,049 p=1902 u=root |  changed: [34.215.196.7]
+2017-10-17 06:44:48,051 p=1902 u=root |  TASK [tomcatinstall : Install Tomcat init script] *********************************************
+2017-10-17 06:44:48,534 p=1902 u=root |  changed: [34.215.196.7]
+2017-10-17 06:44:48,537 p=1902 u=root |  TASK [tomcatinstall : Start Tomcat] ***********************************************************
+2017-10-17 06:44:49,434 p=1902 u=root |   [WARNING]: The service (tomcat) is actually an init script but the system is managed by
+systemd
+
+2017-10-17 06:44:49,434 p=1902 u=root |  changed: [34.215.196.7]
+2017-10-17 06:44:49,437 p=1902 u=root |  TASK [tomcatinstall : wait for tomcat to start] ***********************************************
+2017-10-17 06:44:50,938 p=1902 u=root |  ok: [34.215.196.7]
+2017-10-17 06:44:50,940 p=1902 u=root |  TASK [tomcatinstall : Downloading artifact] ***************************************************
+2017-10-17 06:45:03,188 p=1902 u=root |  fatal: [34.215.196.7]: FAILED! => {"changed": false, "dest": "/usr/share/tomcat/webapps/", "failed": true, "gid": 1001, "group": "tomcat", "mode": "0755", "msg": "Request failed: <urlopen error timed out>", "owner": "tomcat", "secontext": "unconfined_u:object_r:usr_t:s0", "size": 81, "state": "directory", "uid": 1001, "url": "http://192.168.221.129:8085/nexus/service/local/repositories/releases/content/org/sonatype/com/simplewebapp/1.0/simplewebapp-1.0.war"}
+2017-10-17 06:45:03,188 p=1902 u=root |  RUNNING HANDLER [tomcatinstall : restart tomcat] **********************************************
+2017-10-17 06:45:03,189 p=1902 u=root |  	to retry, use: --limit @/home/centos/ansible_demo/cd_project/project/site.retry
+
+2017-10-17 06:45:03,189 p=1902 u=root |  PLAY RECAP ************************************************************************************
+2017-10-17 06:45:03,189 p=1902 u=root |  34.215.196.7               : ok=12   changed=11   unreachable=0    failed=1   
+2017-10-17 06:45:03,189 p=1902 u=root |  localhost                  : ok=4    changed=2    unreachable=0    failed=0   
+2017-10-17 22:16:01,380 p=2771 u=root |  PLAY [Spinup Instance] ***********************************************************************
+2017-10-17 22:16:01,404 p=2771 u=root |  TASK [Gathering Facts] ***********************************************************************
+2017-10-17 22:16:01,867 p=2771 u=root |  ok: [localhost]
+2017-10-17 22:16:01,873 p=2771 u=root |  TASK [instance : Launching an EC2 Instance] **************************************************
+2017-10-17 22:16:23,554 p=2771 u=root |  changed: [localhost -> localhost]
+2017-10-17 22:16:23,557 p=2771 u=root |  TASK [instance : Add all instance public IPs to host group] **********************************
+2017-10-17 22:16:23,581 p=2771 u=root |  changed: [localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-22-45.us-west-2.compute.internal', u'public_ip': u'54.68.99.108', u'private_ip': u'172.31.22.45', u'id': u'i-0b56a4fd335ded673', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/sda1': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-0badbe3e185fac6a9'}}, u'key_name': u'ec2key', u'image_id': u'ami-9fa343e7', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-54-68-99-108.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-54-68-99-108.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-17T22:16:02.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/sda1', u'hypervisor': u'xen'})
+2017-10-17 22:16:23,589 p=2771 u=root |  TASK [instance : Wait for SSH to come up] ****************************************************
+2017-10-17 22:17:23,859 p=2771 u=root |  ok: [localhost -> localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-22-45.us-west-2.compute.internal', u'public_ip': u'54.68.99.108', u'private_ip': u'172.31.22.45', u'id': u'i-0b56a4fd335ded673', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/sda1': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-0badbe3e185fac6a9'}}, u'key_name': u'ec2key', u'image_id': u'ami-9fa343e7', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-54-68-99-108.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-54-68-99-108.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-17T22:16:02.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/sda1', u'hypervisor': u'xen'})
+2017-10-17 22:17:23,867 p=2771 u=root |  PLAY [Install Tomcat & Deploy files] *********************************************************
+2017-10-17 22:17:23,873 p=2771 u=root |  TASK [tomcatinstall : Install Java 1.7] ******************************************************
+2017-10-17 22:17:59,761 p=2771 u=root |  changed: [54.68.99.108]
+2017-10-17 22:17:59,763 p=2771 u=root |  TASK [tomcatinstall : add group "tomcat"] ****************************************************
+2017-10-17 22:18:00,208 p=2771 u=root |  changed: [54.68.99.108]
+2017-10-17 22:18:00,210 p=2771 u=root |  TASK [tomcatinstall : add user "tomcat"] *****************************************************
+2017-10-17 22:18:00,643 p=2771 u=root |  changed: [54.68.99.108]
+2017-10-17 22:18:00,645 p=2771 u=root |  TASK [tomcatinstall : Download Tomcat] *******************************************************
+2017-10-17 22:18:04,207 p=2771 u=root |  changed: [54.68.99.108]
+2017-10-17 22:18:04,209 p=2771 u=root |  TASK [tomcatinstall : Extract archive] *******************************************************
+2017-10-17 22:18:04,710 p=2771 u=root |   [WARNING]: Consider using unarchive module rather than running tar
+
+2017-10-17 22:18:04,711 p=2771 u=root |  changed: [54.68.99.108]
+2017-10-17 22:18:04,713 p=2771 u=root |  TASK [tomcatinstall : Symlink install directory] *********************************************
+2017-10-17 22:18:05,059 p=2771 u=root |  changed: [54.68.99.108]
+2017-10-17 22:18:05,062 p=2771 u=root |  TASK [tomcatinstall : Change ownership of Tomcat installation] *******************************
+2017-10-17 22:18:05,571 p=2771 u=root |  changed: [54.68.99.108]
+2017-10-17 22:18:05,574 p=2771 u=root |  TASK [tomcatinstall : Configure Tomcat server] ***********************************************
+2017-10-17 22:18:06,395 p=2771 u=root |  changed: [54.68.99.108]
+2017-10-17 22:18:06,397 p=2771 u=root |  TASK [tomcatinstall : Configure Tomcat users] ************************************************
+2017-10-17 22:18:06,867 p=2771 u=root |  changed: [54.68.99.108]
+2017-10-17 22:18:06,869 p=2771 u=root |  TASK [tomcatinstall : Install Tomcat init script] ********************************************
+2017-10-17 22:18:07,358 p=2771 u=root |  changed: [54.68.99.108]
+2017-10-17 22:18:07,361 p=2771 u=root |  TASK [tomcatinstall : Start Tomcat] **********************************************************
+2017-10-17 22:18:08,393 p=2771 u=root |   [WARNING]: The service (tomcat) is actually an init script but the system is managed by
+systemd
+
+2017-10-17 22:18:08,393 p=2771 u=root |  changed: [54.68.99.108]
+2017-10-17 22:18:08,396 p=2771 u=root |  TASK [tomcatinstall : wait for tomcat to start] **********************************************
+2017-10-17 22:18:09,862 p=2771 u=root |  ok: [54.68.99.108]
+2017-10-17 22:18:09,865 p=2771 u=root |  TASK [tomcatinstall : Downloading artifact] **************************************************
+2017-10-17 22:18:12,171 p=2771 u=root |  changed: [54.68.99.108]
+2017-10-17 22:18:12,172 p=2771 u=root |  RUNNING HANDLER [tomcatinstall : restart tomcat] *********************************************
+2017-10-17 22:18:14,263 p=2771 u=root |  changed: [54.68.99.108]
+2017-10-17 22:18:14,264 p=2771 u=root |  PLAY RECAP ***********************************************************************************
+2017-10-17 22:18:14,265 p=2771 u=root |  54.68.99.108               : ok=14   changed=13   unreachable=0    failed=0   
+2017-10-17 22:18:14,265 p=2771 u=root |  localhost                  : ok=4    changed=2    unreachable=0    failed=0   
+2017-10-18 03:25:47,230 p=3641 u=root |  PLAY [Spinup Instance] ***********************************************************************
+2017-10-18 03:25:47,252 p=3641 u=root |  TASK [Gathering Facts] ***********************************************************************
+2017-10-18 03:25:47,737 p=3641 u=root |  ok: [localhost]
+2017-10-18 03:25:47,743 p=3641 u=root |  TASK [instance : Launching an EC2 Instance] **************************************************
+2017-10-18 03:26:19,840 p=3641 u=root |  changed: [localhost -> localhost]
+2017-10-18 03:26:19,843 p=3641 u=root |  TASK [instance : Add all instance public IPs to host group] **********************************
+2017-10-18 03:26:19,998 p=3641 u=root |  changed: [localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-16-8.us-west-2.compute.internal', u'public_ip': u'52.89.23.116', u'private_ip': u'172.31.16.8', u'id': u'i-08f9369e437d1c0f6', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/sda1': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-0b5482f9414113baa'}}, u'key_name': u'ec2key', u'image_id': u'ami-9fa343e7', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-52-89-23-116.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-52-89-23-116.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-18T03:25:48.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/sda1', u'hypervisor': u'xen'})
+2017-10-18 03:26:20,008 p=3641 u=root |  TASK [instance : Wait for SSH to come up] ****************************************************
+2017-10-18 03:27:21,174 p=3641 u=root |  ok: [localhost -> localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-16-8.us-west-2.compute.internal', u'public_ip': u'52.89.23.116', u'private_ip': u'172.31.16.8', u'id': u'i-08f9369e437d1c0f6', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/sda1': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-0b5482f9414113baa'}}, u'key_name': u'ec2key', u'image_id': u'ami-9fa343e7', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-52-89-23-116.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-52-89-23-116.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-18T03:25:48.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/sda1', u'hypervisor': u'xen'})
+2017-10-18 03:27:21,183 p=3641 u=root |  PLAY [Install Tomcat & Deploy files] *********************************************************
+2017-10-18 03:27:21,188 p=3641 u=root |  TASK [tomcatinstall : Install Java 1.7] ******************************************************
+2017-10-18 03:27:52,566 p=3641 u=root |  changed: [52.89.23.116]
+2017-10-18 03:27:52,569 p=3641 u=root |  TASK [tomcatinstall : add group "tomcat"] ****************************************************
+2017-10-18 03:27:52,974 p=3641 u=root |  changed: [52.89.23.116]
+2017-10-18 03:27:52,977 p=3641 u=root |  TASK [tomcatinstall : add user "tomcat"] *****************************************************
+2017-10-18 03:27:53,398 p=3641 u=root |  changed: [52.89.23.116]
+2017-10-18 03:27:53,401 p=3641 u=root |  TASK [tomcatinstall : Download Tomcat] *******************************************************
+2017-10-18 03:27:56,557 p=3641 u=root |  changed: [52.89.23.116]
+2017-10-18 03:27:56,559 p=3641 u=root |  TASK [tomcatinstall : Extract archive] *******************************************************
+2017-10-18 03:27:57,054 p=3641 u=root |   [WARNING]: Consider using unarchive module rather than running tar
+
+2017-10-18 03:27:57,054 p=3641 u=root |  changed: [52.89.23.116]
+2017-10-18 03:27:57,057 p=3641 u=root |  TASK [tomcatinstall : Symlink install directory] *********************************************
+2017-10-18 03:27:57,399 p=3641 u=root |  changed: [52.89.23.116]
+2017-10-18 03:27:57,402 p=3641 u=root |  TASK [tomcatinstall : Change ownership of Tomcat installation] *******************************
+2017-10-18 03:27:57,892 p=3641 u=root |  changed: [52.89.23.116]
+2017-10-18 03:27:57,896 p=3641 u=root |  TASK [tomcatinstall : Configure Tomcat server] ***********************************************
+2017-10-18 03:27:58,586 p=3641 u=root |  changed: [52.89.23.116]
+2017-10-18 03:27:58,588 p=3641 u=root |  TASK [tomcatinstall : Configure Tomcat users] ************************************************
+2017-10-18 03:27:59,062 p=3641 u=root |  changed: [52.89.23.116]
+2017-10-18 03:27:59,065 p=3641 u=root |  TASK [tomcatinstall : Install Tomcat init script] ********************************************
+2017-10-18 03:27:59,573 p=3641 u=root |  changed: [52.89.23.116]
+2017-10-18 03:27:59,576 p=3641 u=root |  TASK [tomcatinstall : Start Tomcat] **********************************************************
+2017-10-18 03:28:00,426 p=3641 u=root |   [WARNING]: The service (tomcat) is actually an init script but the system is managed by
+systemd
+
+2017-10-18 03:28:00,426 p=3641 u=root |  changed: [52.89.23.116]
+2017-10-18 03:28:00,429 p=3641 u=root |  TASK [tomcatinstall : wait for tomcat to start] **********************************************
+2017-10-18 03:28:01,942 p=3641 u=root |  ok: [52.89.23.116]
+2017-10-18 03:28:01,944 p=3641 u=root |  TASK [tomcatinstall : Deploy War File] *******************************************************
+2017-10-18 03:28:14,262 p=3641 u=root |  fatal: [52.89.23.116]: FAILED! => {"changed": false, "failed": true, "msg": "Failed to download maven-metadata.xml because of Request failed: <urlopen error timed out>for URL http://192.168.221.129:8085/nexus/content/repositories/releases/org/sonatype/com/simplewebapp/maven-metadata.xml"}
+2017-10-18 03:28:14,263 p=3641 u=root |  RUNNING HANDLER [tomcatinstall : restart tomcat] *********************************************
+2017-10-18 03:28:14,264 p=3641 u=root |  	to retry, use: --limit @/home/centos/ansible_demo/cd_project/project/site.retry
+
+2017-10-18 03:28:14,264 p=3641 u=root |  PLAY RECAP ***********************************************************************************
+2017-10-18 03:28:14,264 p=3641 u=root |  52.89.23.116               : ok=12   changed=11   unreachable=0    failed=1   
+2017-10-18 03:28:14,264 p=3641 u=root |  localhost                  : ok=4    changed=2    unreachable=0    failed=0   
+2017-10-18 03:36:11,495 p=4144 u=root |  PLAY [Spinup Instance] ***********************************************************************
+2017-10-18 03:36:11,517 p=4144 u=root |  TASK [Gathering Facts] ***********************************************************************
+2017-10-18 03:36:12,008 p=4144 u=root |  ok: [localhost]
+2017-10-18 03:36:12,014 p=4144 u=root |  TASK [instance : Launching an EC2 Instance] **************************************************
+2017-10-18 03:36:28,665 p=4144 u=root |  changed: [localhost -> localhost]
+2017-10-18 03:36:28,669 p=4144 u=root |  TASK [instance : Add all instance public IPs to host group] **********************************
+2017-10-18 03:36:28,691 p=4144 u=root |  changed: [localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-23-126.us-west-2.compute.internal', u'public_ip': u'54.148.113.8', u'private_ip': u'172.31.23.126', u'id': u'i-04666966851164c3d', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/sda1': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-0eb903ab50fa1817c'}}, u'key_name': u'ec2key', u'image_id': u'ami-9fa343e7', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-54-148-113-8.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-54-148-113-8.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-18T03:36:13.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/sda1', u'hypervisor': u'xen'})
+2017-10-18 03:36:28,702 p=4144 u=root |  TASK [instance : Wait for SSH to come up] ****************************************************
+2017-10-18 03:37:28,996 p=4144 u=root |  ok: [localhost -> localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-23-126.us-west-2.compute.internal', u'public_ip': u'54.148.113.8', u'private_ip': u'172.31.23.126', u'id': u'i-04666966851164c3d', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/sda1': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-0eb903ab50fa1817c'}}, u'key_name': u'ec2key', u'image_id': u'ami-9fa343e7', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-54-148-113-8.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-54-148-113-8.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-18T03:36:13.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/sda1', u'hypervisor': u'xen'})
+2017-10-18 03:37:29,002 p=4144 u=root |  PLAY [Install Tomcat & Deploy files] *********************************************************
+2017-10-18 03:37:29,007 p=4144 u=root |  TASK [tomcatinstall : Install Java 1.7] ******************************************************
+2017-10-18 03:37:58,690 p=4144 u=root |  changed: [54.148.113.8]
+2017-10-18 03:37:58,693 p=4144 u=root |  TASK [tomcatinstall : add group "tomcat"] ****************************************************
+2017-10-18 03:37:59,094 p=4144 u=root |  changed: [54.148.113.8]
+2017-10-18 03:37:59,097 p=4144 u=root |  TASK [tomcatinstall : add user "tomcat"] *****************************************************
+2017-10-18 03:37:59,526 p=4144 u=root |  changed: [54.148.113.8]
+2017-10-18 03:37:59,529 p=4144 u=root |  TASK [tomcatinstall : Download Tomcat] *******************************************************
+2017-10-18 03:38:02,630 p=4144 u=root |  changed: [54.148.113.8]
+2017-10-18 03:38:02,633 p=4144 u=root |  TASK [tomcatinstall : Extract archive] *******************************************************
+2017-10-18 03:38:03,130 p=4144 u=root |   [WARNING]: Consider using unarchive module rather than running tar
+
+2017-10-18 03:38:03,130 p=4144 u=root |  changed: [54.148.113.8]
+2017-10-18 03:38:03,133 p=4144 u=root |  TASK [tomcatinstall : Symlink install directory] *********************************************
+2017-10-18 03:38:03,472 p=4144 u=root |  changed: [54.148.113.8]
+2017-10-18 03:38:03,475 p=4144 u=root |  TASK [tomcatinstall : Change ownership of Tomcat installation] *******************************
+2017-10-18 03:38:03,979 p=4144 u=root |  changed: [54.148.113.8]
+2017-10-18 03:38:03,982 p=4144 u=root |  TASK [tomcatinstall : Configure Tomcat server] ***********************************************
+2017-10-18 03:38:04,650 p=4144 u=root |  changed: [54.148.113.8]
+2017-10-18 03:38:04,652 p=4144 u=root |  TASK [tomcatinstall : Configure Tomcat users] ************************************************
+2017-10-18 03:38:05,115 p=4144 u=root |  changed: [54.148.113.8]
+2017-10-18 03:38:05,118 p=4144 u=root |  TASK [tomcatinstall : Install Tomcat init script] ********************************************
+2017-10-18 03:38:05,587 p=4144 u=root |  changed: [54.148.113.8]
+2017-10-18 03:38:05,591 p=4144 u=root |  TASK [tomcatinstall : Start Tomcat] **********************************************************
+2017-10-18 03:38:06,453 p=4144 u=root |   [WARNING]: The service (tomcat) is actually an init script but the system is managed by
+systemd
+
+2017-10-18 03:38:06,453 p=4144 u=root |  changed: [54.148.113.8]
+2017-10-18 03:38:06,456 p=4144 u=root |  TASK [tomcatinstall : wait for tomcat to start] **********************************************
+2017-10-18 03:38:07,969 p=4144 u=root |  ok: [54.148.113.8]
+2017-10-18 03:38:07,972 p=4144 u=root |  TASK [tomcatinstall : Deploy War File] *******************************************************
+2017-10-18 03:38:10,264 p=4144 u=root |  changed: [54.148.113.8]
+2017-10-18 03:38:10,265 p=4144 u=root |  RUNNING HANDLER [tomcatinstall : restart tomcat] *********************************************
+2017-10-18 03:38:12,239 p=4144 u=root |  changed: [54.148.113.8]
+2017-10-18 03:38:12,240 p=4144 u=root |  PLAY RECAP ***********************************************************************************
+2017-10-18 03:38:12,241 p=4144 u=root |  54.148.113.8               : ok=14   changed=13   unreachable=0    failed=0   
+2017-10-18 03:38:12,241 p=4144 u=root |  localhost                  : ok=4    changed=2    unreachable=0    failed=0   
+2017-10-18 03:42:07,830 p=4414 u=root |  PLAY [Spinup Instance] ***********************************************************************
+2017-10-18 03:42:07,852 p=4414 u=root |  TASK [Gathering Facts] ***********************************************************************
+2017-10-18 03:42:08,299 p=4414 u=root |  ok: [localhost]
+2017-10-18 03:42:08,305 p=4414 u=root |  TASK [instance : Launching an EC2 Instance] **************************************************
+2017-10-18 03:42:30,137 p=4414 u=root |  changed: [localhost -> localhost]
+2017-10-18 03:42:30,140 p=4414 u=root |  TASK [instance : Add all instance public IPs to host group] **********************************
+2017-10-18 03:42:30,164 p=4414 u=root |  changed: [localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-29-208.us-west-2.compute.internal', u'public_ip': u'54.69.149.197', u'private_ip': u'172.31.29.208', u'id': u'i-034264dcf93269dd8', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/sda1': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-0f121b52f0abf850c'}}, u'key_name': u'ec2key', u'image_id': u'ami-9fa343e7', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-54-69-149-197.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-54-69-149-197.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-18T03:42:09.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/sda1', u'hypervisor': u'xen'})
+2017-10-18 03:42:30,174 p=4414 u=root |  TASK [instance : Wait for SSH to come up] ****************************************************
+2017-10-18 03:43:30,468 p=4414 u=root |  ok: [localhost -> localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-29-208.us-west-2.compute.internal', u'public_ip': u'54.69.149.197', u'private_ip': u'172.31.29.208', u'id': u'i-034264dcf93269dd8', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/sda1': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-0f121b52f0abf850c'}}, u'key_name': u'ec2key', u'image_id': u'ami-9fa343e7', u'tenancy': u'default', u'groups': {u'sg-6f41c215': u'default'}, u'public_dns_name': u'ec2-54-69-149-197.us-west-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-west-2a', u'ami_launch_index': u'0', u'dns_name': u'ec2-54-69-149-197.us-west-2.compute.amazonaws.com', u'region': u'us-west-2', u'launch_time': u'2017-10-18T03:42:09.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/sda1', u'hypervisor': u'xen'})
+2017-10-18 03:43:30,475 p=4414 u=root |  PLAY [Install Tomcat & Deploy files] *********************************************************
+2017-10-18 03:43:30,481 p=4414 u=root |  TASK [tomcatinstall : Install Java 1.7] ******************************************************
+2017-10-18 03:44:02,649 p=4414 u=root |  changed: [54.69.149.197]
+2017-10-18 03:44:02,652 p=4414 u=root |  TASK [tomcatinstall : add group "tomcat"] ****************************************************
+2017-10-18 03:44:03,073 p=4414 u=root |  changed: [54.69.149.197]
+2017-10-18 03:44:03,076 p=4414 u=root |  TASK [tomcatinstall : add user "tomcat"] *****************************************************
+2017-10-18 03:44:03,504 p=4414 u=root |  changed: [54.69.149.197]
+2017-10-18 03:44:03,507 p=4414 u=root |  TASK [tomcatinstall : Download Tomcat] *******************************************************
+2017-10-18 03:44:06,560 p=4414 u=root |  changed: [54.69.149.197]
+2017-10-18 03:44:06,563 p=4414 u=root |  TASK [tomcatinstall : Extract archive] *******************************************************
+2017-10-18 03:44:07,060 p=4414 u=root |   [WARNING]: Consider using unarchive module rather than running tar
+
+2017-10-18 03:44:07,060 p=4414 u=root |  changed: [54.69.149.197]
+2017-10-18 03:44:07,062 p=4414 u=root |  TASK [tomcatinstall : Symlink install directory] *********************************************
+2017-10-18 03:44:07,410 p=4414 u=root |  changed: [54.69.149.197]
+2017-10-18 03:44:07,413 p=4414 u=root |  TASK [tomcatinstall : Change ownership of Tomcat installation] *******************************
+2017-10-18 03:44:07,921 p=4414 u=root |  changed: [54.69.149.197]
+2017-10-18 03:44:07,924 p=4414 u=root |  TASK [tomcatinstall : Configure Tomcat server] ***********************************************
+2017-10-18 03:44:08,604 p=4414 u=root |  changed: [54.69.149.197]
+2017-10-18 03:44:08,606 p=4414 u=root |  TASK [tomcatinstall : Configure Tomcat users] ************************************************
+2017-10-18 03:44:09,076 p=4414 u=root |  changed: [54.69.149.197]
+2017-10-18 03:44:09,078 p=4414 u=root |  TASK [tomcatinstall : Install Tomcat init script] ********************************************
+2017-10-18 03:44:09,560 p=4414 u=root |  changed: [54.69.149.197]
+2017-10-18 03:44:09,563 p=4414 u=root |  TASK [tomcatinstall : Start Tomcat] **********************************************************
+2017-10-18 03:44:10,450 p=4414 u=root |   [WARNING]: The service (tomcat) is actually an init script but the system is managed by
+systemd
+
+2017-10-18 03:44:10,450 p=4414 u=root |  changed: [54.69.149.197]
+2017-10-18 03:44:10,453 p=4414 u=root |  TASK [tomcatinstall : wait for tomcat to start] **********************************************
+2017-10-18 03:44:11,951 p=4414 u=root |  ok: [54.69.149.197]
+2017-10-18 03:44:11,953 p=4414 u=root |  TASK [tomcatinstall : Deploy War File] *******************************************************
+2017-10-18 03:44:14,350 p=4414 u=root |  changed: [54.69.149.197]
+2017-10-18 03:44:14,351 p=4414 u=root |  RUNNING HANDLER [tomcatinstall : restart tomcat] *********************************************
+2017-10-18 03:44:16,349 p=4414 u=root |  changed: [54.69.149.197]
+2017-10-18 03:44:16,350 p=4414 u=root |  PLAY RECAP ***********************************************************************************
+2017-10-18 03:44:16,350 p=4414 u=root |  54.69.149.197              : ok=14   changed=13   unreachable=0    failed=0   
+2017-10-18 03:44:16,350 p=4414 u=root |  localhost                  : ok=4    changed=2    unreachable=0    failed=0   
+2017-10-18 06:30:33,365 p=14398 u=root |  ERROR! The inventory file 'ec2.py' looks like it should be an executable inventory script, but is not marked executable. Perhaps you want to correct this with `chmod +x ec2.py`?
+2017-10-18 06:31:52,386 p=14407 u=root |  ERROR! Attempted to execute "ec2.py" as inventory script: Inventory script (ec2.py) had an execution error: Traceback (most recent call last):
+  File "/root/ansible_demo/project/ec2.py", line 1682, in <module>
+    Ec2Inventory()
+  File "/root/ansible_demo/project/ec2.py", line 193, in __init__
+    self.do_api_calls_update_cache()
+  File "/root/ansible_demo/project/ec2.py", line 534, in do_api_calls_update_cache
+    self.get_instances_by_region(region)
+  File "/root/ansible_demo/project/ec2.py", line 588, in get_instances_by_region
+    conn = self.connect(region)
+  File "/root/ansible_demo/project/ec2.py", line 552, in connect
+    conn = self.connect_to_aws(ec2, region)
+  File "/root/ansible_demo/project/ec2.py", line 577, in connect_to_aws
+    conn = module.connect_to_region(region, **connect_args)
+  File "/usr/lib/python2.7/site-packages/boto/ec2/__init__.py", line 66, in connect_to_region
+    connection_cls=EC2Connection, **kw_params)
+  File "/usr/lib/python2.7/site-packages/boto/regioninfo.py", line 220, in connect
+    return region.connect(**kw_params)
+  File "/usr/lib/python2.7/site-packages/boto/regioninfo.py", line 290, in connect
+    return self.connection_cls(region=self, **kw_params)
+  File "/usr/lib/python2.7/site-packages/boto/ec2/connection.py", line 103, in __init__
+    profile_name=profile_name)
+  File "/usr/lib/python2.7/site-packages/boto/connection.py", line 1100, in __init__
+    provider=provider)
+  File "/usr/lib/python2.7/site-packages/boto/connection.py", line 569, in __init__
+    host, config, self.provider, self._required_auth_capability())
+  File "/usr/lib/python2.7/site-packages/boto/auth.py", line 1021, in get_auth_handler
+    'Check your credentials' % (len(names), str(names)))
+boto.exception.NoAuthHandlerFound: No handler was ready to authenticate. 1 handlers were checked. ['HmacAuthV4Handler'] Check your credentials
+ 
+2017-10-18 06:32:45,038 p=14419 u=root |  ERROR! Attempted to execute "./ec2.py" as inventory script: Inventory script (./ec2.py) had an execution error: Traceback (most recent call last):
+  File "/root/ansible_demo/project/ec2.py", line 1682, in <module>
+    Ec2Inventory()
+  File "/root/ansible_demo/project/ec2.py", line 193, in __init__
+    self.do_api_calls_update_cache()
+  File "/root/ansible_demo/project/ec2.py", line 534, in do_api_calls_update_cache
+    self.get_instances_by_region(region)
+  File "/root/ansible_demo/project/ec2.py", line 588, in get_instances_by_region
+    conn = self.connect(region)
+  File "/root/ansible_demo/project/ec2.py", line 552, in connect
+    conn = self.connect_to_aws(ec2, region)
+  File "/root/ansible_demo/project/ec2.py", line 577, in connect_to_aws
+    conn = module.connect_to_region(region, **connect_args)
+  File "/usr/lib/python2.7/site-packages/boto/ec2/__init__.py", line 66, in connect_to_region
+    connection_cls=EC2Connection, **kw_params)
+  File "/usr/lib/python2.7/site-packages/boto/regioninfo.py", line 220, in connect
+    return region.connect(**kw_params)
+  File "/usr/lib/python2.7/site-packages/boto/regioninfo.py", line 290, in connect
+    return self.connection_cls(region=self, **kw_params)
+  File "/usr/lib/python2.7/site-packages/boto/ec2/connection.py", line 103, in __init__
+    profile_name=profile_name)
+  File "/usr/lib/python2.7/site-packages/boto/connection.py", line 1100, in __init__
+    provider=provider)
+  File "/usr/lib/python2.7/site-packages/boto/connection.py", line 569, in __init__
+    host, config, self.provider, self._required_auth_capability())
+  File "/usr/lib/python2.7/site-packages/boto/auth.py", line 1021, in get_auth_handler
+    'Check your credentials' % (len(names), str(names)))
+boto.exception.NoAuthHandlerFound: No handler was ready to authenticate. 1 handlers were checked. ['HmacAuthV4Handler'] Check your credentials
+ 
+2017-10-18 06:39:00,981 p=14440 u=root |  ERROR! Attempted to execute "ec2.py" as inventory script: Inventory script (ec2.py) had an execution error: Traceback (most recent call last):
+  File "/root/ansible_demo/project/ec2.py", line 1682, in <module>
+    Ec2Inventory()
+  File "/root/ansible_demo/project/ec2.py", line 193, in __init__
+    self.do_api_calls_update_cache()
+  File "/root/ansible_demo/project/ec2.py", line 534, in do_api_calls_update_cache
+    self.get_instances_by_region(region)
+  File "/root/ansible_demo/project/ec2.py", line 588, in get_instances_by_region
+    conn = self.connect(region)
+  File "/root/ansible_demo/project/ec2.py", line 552, in connect
+    conn = self.connect_to_aws(ec2, region)
+  File "/root/ansible_demo/project/ec2.py", line 577, in connect_to_aws
+    conn = module.connect_to_region(region, **connect_args)
+  File "/usr/lib/python2.7/site-packages/boto/ec2/__init__.py", line 66, in connect_to_region
+    connection_cls=EC2Connection, **kw_params)
+  File "/usr/lib/python2.7/site-packages/boto/regioninfo.py", line 220, in connect
+    return region.connect(**kw_params)
+  File "/usr/lib/python2.7/site-packages/boto/regioninfo.py", line 290, in connect
+    return self.connection_cls(region=self, **kw_params)
+  File "/usr/lib/python2.7/site-packages/boto/ec2/connection.py", line 103, in __init__
+    profile_name=profile_name)
+  File "/usr/lib/python2.7/site-packages/boto/connection.py", line 1100, in __init__
+    provider=provider)
+  File "/usr/lib/python2.7/site-packages/boto/connection.py", line 569, in __init__
+    host, config, self.provider, self._required_auth_capability())
+  File "/usr/lib/python2.7/site-packages/boto/auth.py", line 1021, in get_auth_handler
+    'Check your credentials' % (len(names), str(names)))
+boto.exception.NoAuthHandlerFound: No handler was ready to authenticate. 1 handlers were checked. ['HmacAuthV4Handler'] Check your credentials
+ 
+2017-10-18 06:50:04,994 p=14535 u=root |  PLAY [Spinup Instance] **************************************************************************************************************************************
+2017-10-18 06:50:05,044 p=14535 u=root |  TASK [Gathering Facts] **************************************************************************************************************************************
+2017-10-18 06:50:05,533 p=14535 u=root |  ok: [localhost]
+2017-10-18 06:50:05,538 p=14535 u=root |  TASK [instance : Launching an EC2 Instance] *****************************************************************************************************************
+2017-10-18 06:50:05,979 p=14535 u=root |  fatal: [localhost -> localhost]: FAILED! => {"changed": false, "failed": true, "msg": "Region us-east-2c does not seem to be available for aws module boto.ec2. If the region definitely exists, you may need to upgrade boto or extend with endpoints_path"}
+2017-10-18 06:50:05,981 p=14535 u=root |  	to retry, use: --limit @/root/ansible_demo/project/site.retry
+
+2017-10-18 06:50:05,981 p=14535 u=root |  PLAY RECAP **************************************************************************************************************************************************
+2017-10-18 06:50:05,981 p=14535 u=root |  localhost                  : ok=1    changed=0    unreachable=0    failed=1   
+2017-10-18 06:51:42,274 p=14618 u=root |  PLAY [Spinup Instance] **************************************************************************************************************************************
+2017-10-18 06:51:42,297 p=14618 u=root |  TASK [Gathering Facts] **************************************************************************************************************************************
+2017-10-18 06:51:42,742 p=14618 u=root |  ok: [localhost]
+2017-10-18 06:51:42,748 p=14618 u=root |  TASK [instance : Launching an EC2 Instance] *****************************************************************************************************************
+2017-10-18 06:51:59,519 p=14618 u=root |  changed: [localhost -> localhost]
+2017-10-18 06:51:59,523 p=14618 u=root |  TASK [instance : Add all instance public IPs to host group] *************************************************************************************************
+2017-10-18 06:51:59,549 p=14618 u=root |  changed: [localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-21-88.us-east-2.compute.internal', u'public_ip': u'18.221.180.137', u'private_ip': u'172.31.21.88', u'id': u'i-00a5172e85d1aa577', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/sda1': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-0d5664c50bbc82ca4'}}, u'key_name': u'key1', u'image_id': u'ami-cfdafaaa', u'tenancy': u'default', u'groups': {u'sg-01801369': u'CentOS 7 -x86_64- - with Updates HVM-1708-AutogenByAWSMP-'}, u'public_dns_name': u'ec2-18-221-180-137.us-east-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-east-2b', u'ami_launch_index': u'0', u'dns_name': u'ec2-18-221-180-137.us-east-2.compute.amazonaws.com', u'region': u'us-east-2', u'launch_time': u'2017-10-18T06:51:43.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/sda1', u'hypervisor': u'xen'})
+2017-10-18 06:51:59,558 p=14618 u=root |  TASK [instance : Wait for SSH to come up] *******************************************************************************************************************
+2017-10-18 06:52:59,853 p=14618 u=root |  ok: [localhost -> localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-21-88.us-east-2.compute.internal', u'public_ip': u'18.221.180.137', u'private_ip': u'172.31.21.88', u'id': u'i-00a5172e85d1aa577', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'architecture': u'x86_64', u'ramdisk': None, u'block_device_mapping': {u'/dev/sda1': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-0d5664c50bbc82ca4'}}, u'key_name': u'key1', u'image_id': u'ami-cfdafaaa', u'tenancy': u'default', u'groups': {u'sg-01801369': u'CentOS 7 -x86_64- - with Updates HVM-1708-AutogenByAWSMP-'}, u'public_dns_name': u'ec2-18-221-180-137.us-east-2.compute.amazonaws.com', u'state_code': 16, u'tags': {}, u'placement': u'us-east-2b', u'ami_launch_index': u'0', u'dns_name': u'ec2-18-221-180-137.us-east-2.compute.amazonaws.com', u'region': u'us-east-2', u'launch_time': u'2017-10-18T06:51:43.000Z', u'instance_type': u't2.micro', u'root_device_name': u'/dev/sda1', u'hypervisor': u'xen'})
+2017-10-18 06:52:59,862 p=14618 u=root |  PLAY [Install Tomcat & Deploy files] ************************************************************************************************************************
+2017-10-18 06:52:59,867 p=14618 u=root |  TASK [tomcatinstall : Install Java 1.7] *********************************************************************************************************************
+2017-10-18 06:53:28,323 p=14618 u=root |  changed: [18.221.180.137]
+2017-10-18 06:53:28,326 p=14618 u=root |  TASK [tomcatinstall : add group "tomcat"] *******************************************************************************************************************
+2017-10-18 06:53:28,730 p=14618 u=root |  changed: [18.221.180.137]
+2017-10-18 06:53:28,733 p=14618 u=root |  TASK [tomcatinstall : add user "tomcat"] ********************************************************************************************************************
+2017-10-18 06:53:29,162 p=14618 u=root |  changed: [18.221.180.137]
+2017-10-18 06:53:29,165 p=14618 u=root |  TASK [tomcatinstall : Download Tomcat] **********************************************************************************************************************
+2017-10-18 06:53:31,021 p=14618 u=root |  changed: [18.221.180.137]
+2017-10-18 06:53:31,023 p=14618 u=root |  TASK [tomcatinstall : Extract archive] **********************************************************************************************************************
+2017-10-18 06:53:31,549 p=14618 u=root |   [WARNING]: Consider using unarchive module rather than running tar
+
+2017-10-18 06:53:31,549 p=14618 u=root |  changed: [18.221.180.137]
+2017-10-18 06:53:31,552 p=14618 u=root |  TASK [tomcatinstall : Symlink install directory] ************************************************************************************************************
+2017-10-18 06:53:31,903 p=14618 u=root |  changed: [18.221.180.137]
+2017-10-18 06:53:31,906 p=14618 u=root |  TASK [tomcatinstall : Change ownership of Tomcat installation] **********************************************************************************************
+2017-10-18 06:53:32,405 p=14618 u=root |  changed: [18.221.180.137]
+2017-10-18 06:53:32,409 p=14618 u=root |  TASK [tomcatinstall : Configure Tomcat server] **************************************************************************************************************
+2017-10-18 06:53:33,119 p=14618 u=root |  changed: [18.221.180.137]
+2017-10-18 06:53:33,121 p=14618 u=root |  TASK [tomcatinstall : Configure Tomcat users] ***************************************************************************************************************
+2017-10-18 06:53:33,607 p=14618 u=root |  changed: [18.221.180.137]
+2017-10-18 06:53:33,610 p=14618 u=root |  TASK [tomcatinstall : Install Tomcat init script] ***********************************************************************************************************
+2017-10-18 06:53:34,113 p=14618 u=root |  changed: [18.221.180.137]
+2017-10-18 06:53:34,116 p=14618 u=root |  TASK [tomcatinstall : Start Tomcat] *************************************************************************************************************************
+2017-10-18 06:53:35,015 p=14618 u=root |   [WARNING]: The service (tomcat) is actually an init script but the system is managed by systemd
+
+2017-10-18 06:53:35,016 p=14618 u=root |  changed: [18.221.180.137]
+2017-10-18 06:53:35,018 p=14618 u=root |  TASK [tomcatinstall : wait for tomcat to start] *************************************************************************************************************
+2017-10-18 06:53:36,866 p=14618 u=root |  ok: [18.221.180.137]
+2017-10-18 06:53:36,869 p=14618 u=root |  TASK [tomcatinstall : Deploy War File] **********************************************************************************************************************
+2017-10-18 06:53:48,851 p=14618 u=root |  fatal: [18.221.180.137]: FAILED! => {"changed": false, "failed": true, "msg": "Failed to download maven-metadata.xml because of Request failed: <urlopen error timed out>for URL http://ec2-34-215-185-166.us-west-2.compute.amazonaws.com:8080/nexus/content/repositories/releases/org/sonatype/com/simplewebapp/maven-metadata.xml"}
+2017-10-18 06:53:48,851 p=14618 u=root |  RUNNING HANDLER [tomcatinstall : restart tomcat] ************************************************************************************************************
+2017-10-18 06:53:48,852 p=14618 u=root |  	to retry, use: --limit @/root/ansible_demo/project/site.retry
+
+2017-10-18 06:53:48,852 p=14618 u=root |  PLAY RECAP **************************************************************************************************************************************************
+2017-10-18 06:53:48,853 p=14618 u=root |  18.221.180.137             : ok=12   changed=11   unreachable=0    failed=1   
+2017-10-18 06:53:48,853 p=14618 u=root |  localhost                  : ok=4    changed=2    unreachable=0    failed=0   

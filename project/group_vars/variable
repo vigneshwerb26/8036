@@ -1,0 +1,30 @@
+#Here are variables related to the Tomcat installation
+http_port: 8080
+https_port: 8443
+
+# This will configure a default manager-gui user:
+admin_username: admin
+admin_password: admin123
+
+#Firewalld role variables:
+#firewalld_state: latest
+#firewall_debug: true
+#firewalld_rules:
+ # ssh:
+   # port: 22
+   # protocol: tcp
+   # state: enabled
+   # zone: public
+   # permanent: true
+ # http:
+   # port: 80
+   # protocol: tcp
+   # state: enabled
+   # zone: public
+   # permanent: true
+ # https:
+   # port: 443
+   # protocol: tcp
+   # state: enabled
+   #zone: public
+   # permanent: true
