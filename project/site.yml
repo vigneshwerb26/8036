@@ -10,7 +10,7 @@
 
 - name: Install Tomcat & Deploy files
   hosts: ec2hosts
-  gather_facts: False
+  gather_facts: True
   user: ec2-user
   become: yes
   become_method: sudo
