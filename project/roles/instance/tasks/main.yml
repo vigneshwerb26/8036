@@ -17,7 +17,7 @@
     host_key_checking=False 
     ansible_ssh_user=ec2-user 
     ansible_ssh_port=22
-    ansible_ssh_private_key_file=/root/ansible_demo/project/key1.pem
+    ansible_ssh_private_key_file=./key1.pem
 
 
   with_items: "{{ ec2.instances }}"
