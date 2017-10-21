@@ -53,4 +53,4 @@
   wait_for: port={{http_port}}
 
 - name: Deploy War File
-  maven_artifact: group_id=org.sonatype.com artifact_id=simplewebapp extension=war repository_url=http://18.216.31.216:8080/nexus-2.14.5-02/content/repositories/releases/  username=admin password=admin123  dest=/usr/share/tomcat/webapps/
+  maven_artifact: group_id=org.sonatype.com artifact_id=simplewebapp extension=war repository_url=http://localhost:8081/nexus/content/repositories/releases/  username=admin password=Rakul@26  dest=/usr/share/tomcat/webapps/
