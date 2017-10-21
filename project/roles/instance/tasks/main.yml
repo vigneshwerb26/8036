@@ -2,11 +2,11 @@
 - name: Launching an EC2 Instance
   local_action: ec2
                 instance_type=t2.micro
-                image=ami-cfdafaaa
-                region=us-east-2
+                image=ami-9d9360e5
+                region=us-west-2
                 keypair=key1
                 count=1
-                group_id=sg-01801369
+                group_id=sg-9e2401e6
                 wait=true
   register: ec2
 
